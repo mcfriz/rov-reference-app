@@ -44,7 +44,21 @@ export function loadFittingFinderPage() {
       diff: Math.abs(f[prop] - diameter)
     })).sort((a, b) => a.diff - b.diff);
 
-    let output = \`
+    const rows = sorted.slice(0, 5).map((entry, i) => {
+      const f = entry.fitting;
+      const rowClass = i === 0 ? 'highlight bold' : '';
+      return `
+        <tr class="${rowClass}">
+          <td>${f.od} mm</td>
+          <td>${f.id ?? 'N/A'} mm</td>
+          <td>${f.type}</td>
+          <td>${f.thread}</td>
+          <td>${f.tips || 'No tip available'}</td>
+          <td>${entry.diff.toFixed(2)} mm</td>
+        </tr>`;
+    }).join('');
+
+    const table = `
       <table class="result-table">
         <thead>
           <tr>
@@ -57,24 +71,12 @@ export function loadFittingFinderPage() {
           </tr>
         </thead>
         <tbody>
-    \`;
+          ${rows}
+        </tbody>
+      </table>
+    `;
 
-    for (let i = 0; i < 5 && i < sorted.length; i++) {
-      const { fitting, diff } = sorted[i];
-      output += \`
-        <tr class="\${i === 0 ? 'highlight bold' : ''}">
-          <td>\${fitting.od} mm</td>
-          <td>\${fitting.id ?? 'N/A'} mm</td>
-          <td>\${fitting.type}</td>
-          <td>\${fitting.thread}</td>
-          <td>\${fitting.tips || 'No tip available'}</td>
-          <td>\${diff.toFixed(2)} mm</td>
-        </tr>
-      \`;
-    }
-
-    output += '</tbody></table>';
-    document.getElementById('result').innerHTML = output;
+    document.getElementById('result').innerHTML = table;
 
     const bestMatch = document.querySelector('tr.highlight');
     if (bestMatch) {
