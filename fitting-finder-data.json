@@ -1,0 +1,7 @@
+[
+  { "name": "JIC 37° Male", "thread": "7/16-20 UNF", "size_mm": 11.1, "type": "Male" },
+  { "name": "BSPP Female", "thread": "1/2 BSPP", "size_mm": 12.7, "type": "Female" },
+  { "name": "ORFS Male", "thread": "9/16-18 UNF", "size_mm": 14.3, "type": "Male" },
+  { "name": "NPT Female", "thread": "3/8 NPT", "size_mm": 9.5, "type": "Female" },
+  { "name": "Metric Male", "thread": "M16x1.5", "size_mm": 16.0, "type": "Male" }
+]
