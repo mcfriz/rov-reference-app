@@ -1,4 +1,4 @@
-import { loadFittingsPage } from './pages/fittings.js';
+
 import { loadFittingFinderPage } from './pages/fitting-finder.js';
 
 
