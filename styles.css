@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+}
+header {
+  background: #003f5c;
+  color: white;
+  padding: 1rem;
+}
+nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+}
+main {
+  padding: 2rem;
+  background: white;
+  min-height: 70vh;
+}
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #eee;
+}
