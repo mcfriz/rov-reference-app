@@ -4,8 +4,8 @@ import { loadFittingFinderPage } from './pages/fitting-finder.js';
 
 const routes = {
   '/': () => document.getElementById('app').innerHTML = '<h2>Welcome to the ROV Reference App</h2><p>Select a tool from the menu.</p>',
-  '/fittings': loadFittingsPage
-  '/fitting-finder': loadFittingFinderPage,
+  '/fittings': loadFittingsPage,
+  '/fitting-finder': loadFittingFinderPage
 
 };
 
