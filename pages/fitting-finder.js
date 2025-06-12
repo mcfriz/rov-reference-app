@@ -107,7 +107,56 @@ export function loadFittingFinderPage() {
     }
   }
 
+  function addInfoSections() {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'info-wrapper';
+    wrapper.innerHTML = `
+      <div class="card">
+        <button class="card-header">ℹ️ About This Tool</button>
+        <div class="card-body">
+          <p>This tool helps you identify hydraulic fittings by measuring outer or inner diameter. It shows closest matches, thread type, and installation tips.</p>
+        </div>
+      </div>
+      <div class="card">
+        <button class="card-header">📏 How to Measure</button>
+        <div class="card-body">
+          <ul>
+            <li>Use calipers or a ruler.</li>
+            <li>For OD: measure outside edge to edge.</li>
+            <li>For ID: measure inside edge to edge.</li>
+            <li>Read to nearest 0.01 mm for accuracy.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <button class="card-header">🧵 Fitting Types Explained</button>
+        <div class="card-body">
+          <ul>
+            <li><strong>MM</strong>: Metric threads, common in Europe.</li>
+            <li><strong>BSP</strong>: British Standard Pipe parallel, requires an O‑ring.</li>
+            <li><strong>NPT</strong>: US tapered pipe, seals on the thread.</li>
+            <li><strong>JIC</strong>: 37° flare, common in US hydraulic systems.</li>
+            <li><strong>ORFS</strong>: O‑Ring Face Seal, high-pressure and leak-resistant.</li>
+          </ul>
+        </div>
+      </div>
+    `;
+    resultDiv.insertAdjacentElement('afterend', wrapper);
+
+    wrapper.querySelectorAll('.card-header').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const body = btn.nextElementSibling;
+        const open = body.style.maxHeight;
+        wrapper.querySelectorAll('.card-body').forEach(cb => (cb.style.maxHeight = null));
+        if (!open) {
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    });
+  }
+
   loadFittings().then(() => {
     findBtn?.addEventListener('click', findFitting);
+    addInfoSections();
   });
 }
