@@ -55,7 +55,9 @@ export function loadFittingFinderPage() {
       return;
     }
 
-    const prop = type === 'outer' ? 'od' : 'id';
+    const isOuter = type === 'outer';
+    const prop = isOuter ? 'od' : 'id';
+
     const sorted = fittings
       .filter(f => f[prop] !== undefined)
       .map(f => ({
@@ -69,12 +71,21 @@ export function loadFittingFinderPage() {
       return;
     }
 
+    const headers = `
+      <tr>
+        <th>${isOuter ? 'Outer Diameter' : 'Inner Diameter'}</th>
+        <th>Type</th>
+        <th>Thread</th>
+        <th>Tips</th>
+        <th>Diff.</th>
+      </tr>`;
+
     const rows = sorted.slice(0, 5).map((entry, i) => {
       const f = entry.fitting;
+      const diameterValue = isOuter ? f.od : f.id;
       return `
         <tr class="${i === 0 ? 'highlight bold' : ''}">
-          <td>${f.od ?? 'N/A'} mm</td>
-          <td>${f.id ?? 'N/A'} mm</td>
+          <td>${diameterValue ?? 'N/A'} mm</td>
           <td>${f.type}</td>
           <td>${f.thread}</td>
           <td>${f.tips && f.tips !== "NULL" ? f.tips : '—'}</td>
@@ -84,19 +95,8 @@ export function loadFittingFinderPage() {
 
     resultDiv.innerHTML = `
       <table class="result-table">
-        <thead>
-          <tr>
-            <th>Outer Diameter</th>
-            <th>Inner Diameter</th>
-            <th>Type</th>
-            <th>Thread</th>
-            <th>Tips</th>
-            <th>Diff.</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${rows}
-        </tbody>
+        <thead>${headers}</thead>
+        <tbody>${rows}</tbody>
       </table>
     `;
 
