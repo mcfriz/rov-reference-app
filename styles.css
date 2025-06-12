@@ -194,3 +194,11 @@ tr.highlight {
     font-size: 0.95rem;
   }
 }
+.measure-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
