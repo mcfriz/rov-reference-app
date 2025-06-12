@@ -22,11 +22,8 @@ export function loadFittingFinderPage() {
     </div>
   `;
 
+  const resultDiv = document.getElementById('result');
   const findBtn = document.getElementById('findBtn');
-  if (findBtn) {
-    findBtn.addEventListener('click', findFitting);
-  }
-
   let fittings = [];
 
   async function loadFittings() {
@@ -34,16 +31,16 @@ export function loadFittingFinderPage() {
       const res = await fetch('src/data/fittings2.json');
       if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
       fittings = await res.json();
+      console.log('✅ Fittings loaded:', fittings.length);
     } catch (err) {
-      console.error('Failed to load fittings:', err);
-      document.getElementById('result').innerHTML = `<p class="error">Failed to load fitting data. Please try again later.</p>`;
+      console.error('❌ Failed to load fittings:', err);
+      resultDiv.innerHTML = `<p class="error">Failed to load fitting data. Please try again later.</p>`;
     }
   }
 
   async function findFitting() {
     const diameterInput = document.getElementById('diameter');
     const typeSelect = document.getElementById('type');
-    const resultDiv = document.getElementById('result');
 
     const diameter = parseFloat(diameterInput.value);
     const type = typeSelect.value;
@@ -53,8 +50,10 @@ export function loadFittingFinderPage() {
       return;
     }
 
-    if (!fittings.length) await loadFittings();
-    if (!fittings.length) return; // exit if loading failed
+    if (!fittings.length) {
+      alert('Fitting data not loaded yet.');
+      return;
+    }
 
     const prop = type === 'outer' ? 'od' : 'id';
     const sorted = fittings
@@ -78,7 +77,7 @@ export function loadFittingFinderPage() {
           <td>${f.id ?? 'N/A'} mm</td>
           <td>${f.type}</td>
           <td>${f.thread}</td>
-          <td>${f.tips || '—'}</td>
+          <td>${f.tips && f.tips !== "NULL" ? f.tips : '—'}</td>
           <td>${entry.diff.toFixed(2)} mm</td>
         </tr>`;
     }).join('');
@@ -108,5 +107,7 @@ export function loadFittingFinderPage() {
     }
   }
 
-  loadFittings();
+  loadFittings().then(() => {
+    findBtn?.addEventListener('click', findFitting);
+  });
 }
