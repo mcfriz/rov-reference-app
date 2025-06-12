@@ -32,19 +32,47 @@
     <p>&copy; 2025 ROV Tools</p>
   </footer>
 
+  <!-- Install App Button -->
+  <button id="installBtn" style="display: none;">📲 Install App</button>
+
   <!-- JS App Entry -->
   <script type="module" src="app.js"></script>
 
-  <!-- Register Service Worker for PWA -->
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/rov-reference-app/service-worker.js', {
-      scope: '/rov-reference-app/'
-    })
-    .then(reg => console.log('✅ Service Worker registered:', reg.scope))
-    .catch(err => console.error('❌ Service Worker registration failed:', err));
-  }
-</script>
+  <!-- Register Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/rov-reference-app/service-worker.js', {
+        scope: '/rov-reference-app/'
+      })
+      .then(reg => console.log('✅ Service Worker registered:', reg.scope))
+      .catch(err => console.error('❌ Service Worker registration failed:', err));
+    }
+  </script>
 
+  <!-- PWA Install Prompt -->
+  <script>
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = 'block';
+    });
+
+    installBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`User choice: ${outcome}`);
+      installBtn.style.display = 'none';
+      deferredPrompt = null;
+    });
+
+    window.addEventListener('appinstalled', () => {
+      console.log('✅ App successfully installed');
+      installBtn.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
