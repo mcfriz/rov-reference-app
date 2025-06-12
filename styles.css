@@ -170,6 +170,30 @@ tr.highlight {
   z-index: 1000;
 }
 
+/* Toast Animation */
+#install-toast {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background: var(--accent);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 9999;
+  opacity: 0;
+  animation: fadeInOut 3s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
 @media (max-width: 600px) {
   nav ul {
     flex-direction: column;
