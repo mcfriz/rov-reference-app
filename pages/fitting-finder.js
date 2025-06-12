@@ -28,7 +28,7 @@ export function loadFittingFinderPage() {
 
   async function loadFittings() {
     try {
-      const res = await fetch('src/data/fittings2.json');
+      const res = await fetch('fitting-finder-data.json');
       if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
       fittings = await res.json();
       console.log('✅ Fittings loaded:', fittings.length);
