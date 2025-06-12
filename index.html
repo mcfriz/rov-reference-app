@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="/rov-reference-app/icons/icon-192.png">
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ROV Reference App</title>
@@ -10,6 +8,7 @@
   <!-- PWA manifest & theme -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#ffa600" />
+  <link rel="icon" type="image/png" href="/rov-reference-app/icons/icon-192.png">
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
@@ -37,6 +36,9 @@
   <!-- Install App Button -->
   <button id="installBtn" style="display: none;">📲 Install App</button>
 
+  <!-- Install Toast -->
+  <div id="install-toast" style="display: none;">✅ App successfully installed!</div>
+
   <!-- JS App Entry -->
   <script type="module" src="app.js"></script>
 
@@ -51,7 +53,7 @@
     }
   </script>
 
-  <!-- PWA Install Prompt -->
+  <!-- PWA Install Prompt with Success Toast -->
   <script>
     let deferredPrompt;
     const installBtn = document.getElementById('installBtn');
@@ -74,6 +76,16 @@
     window.addEventListener('appinstalled', () => {
       console.log('✅ App successfully installed');
       installBtn.style.display = 'none';
+
+      const toast = document.getElementById('install-toast');
+      if (toast) {
+        toast.style.display = 'block';
+        toast.classList.add('toast');
+        setTimeout(() => {
+          toast.style.display = 'none';
+          toast.classList.remove('toast');
+        }, 3000);
+      }
     });
   </script>
 </body>
