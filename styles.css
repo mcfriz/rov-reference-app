@@ -184,7 +184,7 @@ tr.highlight {
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   z-index: 9999;
   opacity: 0;
-  animation: fadeInOut 3s ease-in-out forwards;
+  animation: fadeInOut 8s ease-in-out forwards;
 }
 
 @keyframes fadeInOut {
