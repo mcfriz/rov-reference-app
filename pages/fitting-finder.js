@@ -117,21 +117,20 @@ export function loadFittingFinderPage() {
           <p>This tool helps you identify hydraulic fittings by measuring outer or inner diameter. It shows closest matches, thread type, and installation tips.</p>
         </div>
       </div>
+
       <div class="card">
         <button class="card-header">📏 How to Measure</button>
-        <div class="card">
-  <button class="card-header">📏 How to Measure</button>
-  <div class="card-body">
-    <p>Use a caliper and follow these steps:</p>
-    <ol>
-      <li><strong>Outer Diameter (OD):</strong> Place the outer jaws of the caliper on the outside edges of the fitting.</li>
-      <li><strong>Inner Diameter (ID):</strong> Use the inner jaws to measure the inner opening of the fitting.</li>
-    </ol>
-    <img src="images/how-to-measure.jpg" alt="How to measure outer and inner diameter with calipers" class="measure-img" />
-    <p>For accuracy, measure to at least <strong>0.01 mm</strong> with digital or precision calipers.</p>
-  </div>
-</div>
+        <div class="card-body">
+          <p>Use a caliper and follow these steps:</p>
+          <ol>
+            <li><strong>Outer Diameter (OD):</strong> Place the outer jaws of the caliper on the outside edges of the fitting.</li>
+            <li><strong>Inner Diameter (ID):</strong> Use the inner jaws to measure the inner opening of the fitting.</li>
+          </ol>
+          <img src="images/how-to-measure.jpg" alt="How to measure outer and inner diameter with calipers" class="measure-img" />
+          <p>For accuracy, measure to at least <strong>0.01 mm</strong> with digital or precision calipers.</p>
+        </div>
       </div>
+
       <div class="card">
         <button class="card-header">🧵 Fitting Types Explained</button>
         <div class="card-body">
@@ -150,11 +149,10 @@ export function loadFittingFinderPage() {
     wrapper.querySelectorAll('.card-header').forEach(btn => {
       btn.addEventListener('click', () => {
         const body = btn.nextElementSibling;
-        const open = body.style.maxHeight;
-        wrapper.querySelectorAll('.card-body').forEach(cb => (cb.style.maxHeight = null));
-        if (!open) {
-          body.style.maxHeight = body.scrollHeight + 'px';
-        }
+        wrapper.querySelectorAll('.card-body').forEach(cb => {
+          if (cb !== body) cb.style.maxHeight = null;
+        });
+        body.style.maxHeight = body.style.maxHeight ? null : body.scrollHeight + 'px';
       });
     });
   }
