@@ -299,6 +299,30 @@ tr.highlight {
   background: var(--secondary);
   color: white;
 }
+/* Wrap & style button area inside guide section */
+.finder-button-wrap {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.finder-button-wrap span {
+  font-size: 0.95rem;
+}
+
+.guide-btn.small-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  background: var(--secondary);
+}
+
+.guide-btn.small-btn:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
 
 /* TOC sidebar */
 .guide-toc {
