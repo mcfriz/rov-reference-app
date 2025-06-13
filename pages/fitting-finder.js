@@ -74,10 +74,10 @@ export function loadFittingFinderPage() {
     const headers = `
       <tr>
         <th>${isOuter ? 'Outer Diameter' : 'Inner Diameter'}</th>
-        <th>Type</th>
+        <th>Fittings Type</th>
         <th>Thread</th>
         <th>Tips</th>
-        <th>Diff.</th>
+        <th>Size Differance</th>
       </tr>`;
 
     const rows = sorted.slice(0, 5).map((entry, i) => {
