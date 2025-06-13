@@ -288,110 +288,59 @@ tr.highlight {
     height: 32px;
   }
 }
+/* Enhance guide readability and spacing */
 .guide-container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-}
-
-.guide-section h3 {
-  margin-bottom: 0.5rem;
-  color: var(--primary);
-  border-bottom: 2px solid var(--accent);
-  padding-bottom: 0.25rem;
-}
-
-.guide-body p,
-.guide-body ul,
-.guide-body ol,
-.guide-body table {
-  margin-top: 0.5rem;
-  line-height: 1.5;
-}
-
-.guide-body table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.guide-body th,
-.guide-body td {
-  border: 1px solid #ccc;
-  padding: 0.5rem;
-  text-align: left;
-}
-
-.guide-body th {
-  background: var(--secondary);
-  color: white;
-}
- .guide-btn {
-  margin: 2rem auto 0;
-  display: block;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  background-color: var(--primary);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  max-width: 300px;
-
-}
-
-.guide-btn:hover {
-  background-color: var(--secondary);
-}
-.guide-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
+  padding-bottom: 2rem;
 }
 
 .guide-card {
   background: white;
   border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .guide-card h3 {
   margin-top: 0;
   color: var(--primary);
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   border-bottom: 3px solid var(--accent);
-  padding-bottom: 0.25rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
 }
 
 .guide-card p,
 .guide-card ul,
 .guide-card ol {
   margin-top: 1rem;
-  line-height: 1.6;
+  line-height: 1.75;
+  font-size: 1rem;
   color: var(--text);
 }
 
 .guide-card ul,
 .guide-card ol {
-  padding-left: 1.2rem;
+  padding-left: 1.5rem;
 }
 
 .guide-card li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-/* Table within guide */
+/* Table rounding for clarity */
 .guide-card table {
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
   border-collapse: collapse;
-  font-size: 0.95rem;
+  font-size: 0.97rem;
 }
 
 .guide-card th,
 .guide-card td {
-  padding: 0.6rem;
+  padding: 0.75rem;
   border: 1px solid #ddd;
   text-align: left;
 }
@@ -401,32 +350,35 @@ tr.highlight {
   color: white;
 }
 
-/* Responsive tweaks */
+/* iPhone responsive tweaks */
 @media (max-width: 600px) {
   .guide-card {
-    padding: 1rem;
+    padding: 1.25rem 1rem;
   }
   .guide-card h3 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+  }
+  .guide-card p,
+  .guide-card ul,
+  .guide-card ol {
+    font-size: 0.97rem;
+    line-height: 1.6;
+  }
+  .guide-card li {
+    margin-bottom: 0.65rem;
+  }
+  .guide-card table th,
+  .guide-card table td {
+    padding: 0.6rem;
+    font-size: 0.9rem;
   }
 }
-.guide-toc {
-  position: fixed;
-  top: 100px;
-  right: 20px;
-  background: white;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+/* Optional: subtle letter spacing in headings */
+.guide-card h3 {
+  letter-spacing: 0.5px;
 }
-.guide-toc li {
-  margin-bottom: 0.5rem;
-}
-.guide-toc a {
-  color: var(--primary);
-  text-decoration: none;
-}
+
 
 
 }
