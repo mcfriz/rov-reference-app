@@ -106,7 +106,15 @@ export function loadFittingFinderPage() {
       // setTimeout(() => bestMatch.classList.remove('highlight'), 2000);
     }
   }
+const guideBtn = document.createElement('button');
+guideBtn.textContent = '📘 Open Fitting Guide';
+guideBtn.className = 'guide-btn';
+guideBtn.addEventListener('click', () => {
+  window.location.hash = '#/guide';
+});
+app.appendChild(guideBtn);
 
+  
   function addInfoSections() {
     const wrapper = document.createElement('div');
     wrapper.className = 'info-wrapper';
