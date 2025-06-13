@@ -126,7 +126,11 @@ export function loadFittingFinderPage() {
             <li><strong>Outer Diameter (OD):</strong> Place the outer jaws of the caliper on the outside edges of the fitting.</li>
             <li><strong>Inner Diameter (ID):</strong> Use the inner jaws to measure the inner opening of the fitting.</li>
           </ol>
-          <img src="images/how-to-measure.jpg" alt="How to measure outer and inner diameter with calipers" class="measure-img" />
+          <img
+            src="images/how-to-measure.jpg"
+            alt="How to measure outer and inner diameter with calipers"
+            class="measure-img"
+          />
           <p>For accuracy, measure to at least <strong>0.01 mm</strong> with digital or precision calipers.</p>
         </div>
       </div>
@@ -149,10 +153,9 @@ export function loadFittingFinderPage() {
     wrapper.querySelectorAll('.card-header').forEach(btn => {
       btn.addEventListener('click', () => {
         const body = btn.nextElementSibling;
-        wrapper.querySelectorAll('.card-body').forEach(cb => {
-          if (cb !== body) cb.style.maxHeight = null;
-        });
-        body.style.maxHeight = body.style.maxHeight ? null : body.scrollHeight + 'px';
+        const isOpen = body.style.maxHeight;
+        wrapper.querySelectorAll('.card-body').forEach(b => (b.style.maxHeight = null));
+        if (!isOpen) body.style.maxHeight = body.scrollHeight + 'px';
       });
     });
   }
