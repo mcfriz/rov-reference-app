@@ -106,13 +106,15 @@ export function loadFittingFinderPage() {
       // setTimeout(() => bestMatch.classList.remove('highlight'), 2000);
     }
   }
-const guideBtn = document.createElement('button');
-guideBtn.textContent = '📘 Open Fitting Guide';
-guideBtn.className = 'guide-btn';
-guideBtn.addEventListener('click', () => {
-  window.location.hash = '#/guide';
-});
-app.appendChild(guideBtn);
+
+  const guideButtonWrap = document.createElement('div');
+guideButtonWrap.className = 'finder-button-wrap';
+guideButtonWrap.innerHTML = `
+  <span>📘 <strong>Need help with hydraulic fittings?</strong> View the Fitting Guide:</span>
+  <a href="#/guide" class="guide-btn small-btn"><strong>Open Fitting Guide</strong></a>
+`;
+app.appendChild(guideButtonWrap);
+
 
   
   function addInfoSections() {

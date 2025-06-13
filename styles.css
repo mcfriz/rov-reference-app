@@ -309,16 +309,26 @@ tr.highlight {
   padding: 0.5rem 1.2rem;
   font-size: 0.95rem;
   background: var(--accent);
-  color: #000000 ;
+  color: #000;
+  text-decoration: none;
+  border-radius: 6px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+.guide-btn {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.95rem;
+  background: var(--accent);
+  color: #000;
   text-decoration: none;
   border-radius: 6px;
   display: inline-block;
   transition: background-color 0.3s ease;
 }
 
-
 .guide-btn.small-btn:hover {
   background-color: var(--accent-light);
+  color: #000;
 }
 
 
@@ -351,8 +361,68 @@ tr.highlight {
   border: 1px solid #ccc;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
+.app-header {
+  background: var(--primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-/* Mobile */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-title h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.logo {
+  width: 36px;
+  height: 36px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+.nav-menu ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.nav-menu a:hover {
+  background: var(--secondary);
+}
+/* Mobile styles for general layout */
 @media (max-width: 600px) {
   nav ul {
     flex-direction: column;
@@ -410,5 +480,31 @@ tr.highlight {
   .finder-button-wrap {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* Responsive header/nav for screen <= 768px */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--primary);
+    width: 100%;
+    display: none;
+    flex-direction: column;
+  }
+
+  .nav-menu ul {
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-menu.show {
+    display: flex;
   }
 }

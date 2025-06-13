@@ -11,93 +11,102 @@
   <link rel="icon" type="image/png" href="/rov-reference-app/icons/icon-192.png">
   <link rel="preload" as="image" href="/rov-reference-app/icons/icon-192.png" />
 
-
-
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<header>
-  <div class="header-bar">
-    <img src="icons/icon-192.png" alt="ROV Logo" class="logo" />
-    <h1>ROV Reference App</h1>
+<header class="app-header">
+  <div class="header-inner">
+    <div class="logo-title">
+      <img src="icons/icon-192.png" alt="ROV Logo" class="logo" />
+      <h1>ROV Reference</h1>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+    <nav class="nav-menu" id="mainNav">
+      <ul>
+        <li><a href="#/" data-link>Home</a></li>
+        <li><a href="#/fittings" data-link>Fittings Calculator</a></li>
+        <li><a href="#/finder" data-link>Fitting Finder</a></li>
+        <li><a href="#/guide" data-link>Fitting Guide</a></li>
+      </ul>
+    </nav>
   </div>
-  
-
-  <nav aria-label="Main Navigation">
-    <ul>
-      <li><a href="#/" data-link>Home</a></li>
-      <li><a href="#/fittings" data-link>Fittings Calculator</a></li>
-      <li><a href="#/finder" data-link>Fitting Finder</a></li>
-      <li><a href="#/guide" data-link>Fitting Guide</a></li>
-
-    </ul>
-  </nav>
 </header>
 
+<main id="app">
+  <noscript>Please enable JavaScript to use this app.</noscript>
+</main>
 
-  <main id="app">
-    <noscript>Please enable JavaScript to use this app.</noscript>
-  </main>
+<footer>
+  <p>&copy; 2025 ROV Tools</p>
+</footer>
 
-  <footer>
-    <p>&copy; 2025 ROV Tools</p>
-  </footer>
+<!-- Install App Button -->
+<button id="installBtn" style="display: none;">📲 Install App</button>
 
-  <!-- Install App Button -->
-  <button id="installBtn" style="display: none;">📲 Install App</button>
+<!-- Install Toast -->
+<div id="install-toast" style="display: none;">✅ App successfully installed!</div>
 
-  <!-- Install Toast -->
-  <div id="install-toast" style="display: none;">✅ App successfully installed!</div>
+<!-- JS App Entry -->
+<script type="module" src="app.js"></script>
 
-  <!-- JS App Entry -->
-  <script type="module" src="app.js"></script>
+<!-- Register Service Worker -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/rov-reference-app/service-worker.js', {
+      scope: '/rov-reference-app/'
+    })
+    .then(reg => console.log('✅ Service Worker registered:', reg.scope))
+    .catch(err => console.error('❌ Service Worker registration failed:', err));
+  }
+</script>
 
-  <!-- Register Service Worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/rov-reference-app/service-worker.js', {
-        scope: '/rov-reference-app/'
-      })
-      .then(reg => console.log('✅ Service Worker registered:', reg.scope))
-      .catch(err => console.error('❌ Service Worker registration failed:', err));
+<!-- PWA Install Prompt with Success Toast -->
+<script>
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'block';
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`User choice: ${outcome}`);
+    installBtn.style.display = 'none';
+    deferredPrompt = null;
+  });
+
+  window.addEventListener('appinstalled', () => {
+    console.log('✅ App successfully installed');
+    installBtn.style.display = 'none';
+
+    const toast = document.getElementById('install-toast');
+    if (toast) {
+      toast.style.display = 'block';
+      toast.classList.add('toast');
+      setTimeout(() => {
+        toast.style.display = 'none';
+        toast.classList.remove('toast');
+      }, 8000);
     }
-  </script>
+  });
+</script>
 
-  <!-- PWA Install Prompt with Success Toast -->
-  <script>
-    let deferredPrompt;
-    const installBtn = document.getElementById('installBtn');
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installBtn.style.display = 'block';
-    });
-
-    installBtn.addEventListener('click', async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      console.log(`User choice: ${outcome}`);
-      installBtn.style.display = 'none';
-      deferredPrompt = null;
-    });
-
-    window.addEventListener('appinstalled', () => {
-      console.log('✅ App successfully installed');
-      installBtn.style.display = 'none';
-
-      const toast = document.getElementById('install-toast');
-      if (toast) {
-        toast.style.display = 'block';
-        toast.classList.add('toast');
-        setTimeout(() => {
-          toast.style.display = 'none';
-          toast.classList.remove('toast');
-        }, 8000);
-      }
-    });
-  </script>
+<!-- Mobile menu toggle -->
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.getElementById('mainNav');
+  menuToggle?.addEventListener('click', () => {
+    mainNav?.classList.toggle('show');
+  });
+  window.addEventListener('hashchange', () => {
+    mainNav?.classList.remove('show');
+  });
+</script>
 </body>
 </html>

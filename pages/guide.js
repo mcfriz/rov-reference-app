@@ -40,7 +40,7 @@ export function loadGuidePage() {
         </ol>
        <div class="finder-button-wrap">
   <span>🛠️ <strong>Need help identifying?</strong> Try the Fitting Finder:</span>
-  <a href="#/finder" class="guide-btn small-btn">Open Fitting Finder</a>
+  <a href="#/finder" class="guide-btn small-btn"> <strong>Open Fitting Finder</strong></a>
 </div>
 
       </div>
