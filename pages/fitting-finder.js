@@ -114,7 +114,7 @@ export function loadFittingFinderPage() {
       <div class="card">
         <button class="card-header">ℹ️ About This Tool</button>
         <div class="card-body">
-          <p>This tool helps you identify hydraulic fittings by measuring outer or inner diameter. It shows closest matches, thread type, and installation tips.</p>
+          <p>This tool helps you identify hydraulic fittings by measuring outer or inner diameter. It shows closest matches, thread type, and tips.</p>
         </div>
       </div>
 
@@ -123,15 +123,15 @@ export function loadFittingFinderPage() {
         <div class="card-body">
           <p>Use a caliper and follow these steps:</p>
           <ol>
-            <li><strong>Outer Diameter (OD):</strong> Place the outer jaws of the caliper on the outside edges of the fitting.</li>
-            <li><strong>Inner Diameter (ID):</strong> Use the inner jaws to measure the inner opening of the fitting.</li>
+            <li><strong>Outer Diameter (OD):</strong> Place the outer jaws of the caliper on the outside edges of the fittings thread.</li>
+            <li><strong>Inner Diameter (ID):</strong> Use the inner jaws to measure the inner opening of the fittings thread.</li>
           </ol>
           <img
             src="images/how-to-measure.jpg"
             alt="How to measure outer and inner diameter with calipers"
             class="measure-img"
           />
-          <p>For accuracy, measure to at least <strong>0.01 mm</strong> with digital or precision calipers.</p>
+          <p>For accuracy, measure to at least <strong>0.1 mm</strong> with digital or precision calipers.</p>
         </div>
       </div>
 
@@ -139,11 +139,11 @@ export function loadFittingFinderPage() {
         <button class="card-header">🧵 Fitting Types Explained</button>
         <div class="card-body">
           <ul>
-            <li><strong>MM</strong>: Metric threads, common in Europe.</li>
-            <li><strong>BSP</strong>: British Standard Pipe parallel, requires an O‑ring.</li>
-            <li><strong>NPT</strong>: US tapered pipe, seals on the thread.</li>
-            <li><strong>JIC</strong>: 37° flare, common in US hydraulic systems.</li>
-            <li><strong>ORFS</strong>: O‑Ring Face Seal, high-pressure and leak-resistant.</li>
+            <li><strong>Ermeto</strong>: Ermeto fittings are DIN 2353 metric compression fittings with a 24° cone and cutting ring, commonly used in European hydraulic systems. They provide a secure, vibration-resistant, metal-to-metal seal.</li>
+            <li><strong>BSP</strong>: BSPP fittings have parallel threads and seal using a bonded washer (e.g. Dowty seal) against a flat face. Often found on European and legacy ROV equipment, especially valves and cylinders.</li>
+            <li><strong>NPT</strong>: NPT fittings have tapered threads that seal by thread interference, typically using thread tape or sealant. They are less common offshore now but still found on older systems and low-pressure lines.</li>
+            <li><strong>JIC</strong>: JIC fittings use a 37° metal-to-metal flare to create a high-pressure seal, with UNF straight threads. They’re widely used on ROVs for hoses, manipulators, and valve packs due to their reliability and ease of service.</li>
+            <li><strong>ORFS</strong>: ORB fittings use straight threads and a captured O-ring to form a leak-free face seal. They’re common in manifolds, pressure ports, and hydraulic blocks where compact, high-pressure connections are needed.</li>
           </ul>
         </div>
       </div>
