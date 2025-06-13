@@ -103,7 +103,7 @@ export function loadFittingFinderPage() {
     const bestMatch = document.querySelector('tr.highlight');
     if (bestMatch) {
       bestMatch.classList.add('highlight');
-      setTimeout(() => bestMatch.classList.remove('highlight'), 2000);
+      // setTimeout(() => bestMatch.classList.remove('highlight'), 2000);
     }
   }
 
