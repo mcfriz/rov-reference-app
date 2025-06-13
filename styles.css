@@ -39,8 +39,10 @@ header h1 {
 
 .logo {
   height: 40px;
-  width: 40px;
+  width: auto;
+  margin-right: 1rem;
 }
+
 
 
 nav ul {
@@ -261,11 +263,12 @@ tr.highlight {
   .card-body {
     padding: 0 0.75rem;
   }
+
   .header-bar {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .logo {
