@@ -81,7 +81,6 @@ footer {
   margin-top: 2rem;
 }
 
-/* Input section */
 .container {
   display: flex;
   flex-direction: column;
@@ -118,7 +117,6 @@ footer {
   background: var(--accent-light);
 }
 
-/* Install button */
 #installBtn {
   position: fixed;
   bottom: 90px;
@@ -136,7 +134,6 @@ footer {
   background: var(--accent-light);
 }
 
-/* Toast */
 #install-toast {
   position: fixed;
   bottom: 20px;
@@ -151,7 +148,6 @@ footer {
   font-size: 0.95rem;
 }
 
-/* Table styling */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -179,12 +175,10 @@ tr.highlight {
   font-weight: bold;
 }
 
-/* Result section */
 .result-section {
   overflow-x: auto;
 }
 
-/* Info accordion cards */
 .card {
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -223,7 +217,6 @@ tr.highlight {
   text-indent: -0.75rem;
 }
 
-/* Guide content */
 .guide-container {
   display: flex;
   flex-direction: column;
@@ -285,7 +278,7 @@ tr.highlight {
   color: white;
 }
 
-/* Button inside guide section */
+/* Buttons box */
 .finder-button-wrap {
   margin-top: 1.5rem;
   padding: 1rem;
@@ -305,6 +298,8 @@ tr.highlight {
   color: var(--primary);
 }
 
+/* Button style */
+.guide-btn,
 .guide-btn.small-btn {
   padding: 0.5rem 1.2rem;
   font-size: 0.95rem;
@@ -314,25 +309,15 @@ tr.highlight {
   border-radius: 6px;
   display: inline-block;
   transition: background-color 0.3s ease;
-}
-.guide-btn {
-  padding: 0.5rem 1.2rem;
-  font-size: 0.95rem;
-  background: var(--accent);
-  color: #000;
-  text-decoration: none;
-  border-radius: 6px;
-  display: inline-block;
-  transition: background-color 0.3s ease;
+  text-align: center;
 }
 
+.guide-btn:hover,
 .guide-btn.small-btn:hover {
   background-color: var(--accent-light);
   color: #000;
 }
 
-
-/* TOC */
 .guide-toc {
   position: fixed;
   top: 100px;
@@ -351,7 +336,6 @@ tr.highlight {
   text-decoration: none;
 }
 
-/* How-to-measure image */
 .measure-img {
   display: block;
   max-width: 100%;
@@ -361,6 +345,7 @@ tr.highlight {
   border: 1px solid #ccc;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
+
 .app-header {
   background: var(--primary);
   color: white;
@@ -422,7 +407,7 @@ tr.highlight {
 .nav-menu a:hover {
   background: var(--secondary);
 }
-/* Mobile styles for general layout */
+
 @media (max-width: 600px) {
   nav ul {
     flex-direction: column;
@@ -478,12 +463,10 @@ tr.highlight {
   }
 
   .finder-button-wrap {
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 }
 
-/* Responsive header/nav for screen <= 768px */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
