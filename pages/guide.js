@@ -2,10 +2,7 @@
 export function loadGuidePage() {
   const app = document.getElementById('app');
   if (!app) return;
-<div class="guide-card">
-  <h3>1. Introduction</h3>
-  <p>This guide is for ROV technicians…</p>
-</div>
+
 
   app.innerHTML = `
     <section class="guide-container">
