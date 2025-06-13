@@ -38,10 +38,11 @@ export function loadGuidePage() {
           <li><strong>Look for Markings:</strong> Some fittings have codes or logos.</li>
           <li><strong>Use Thread ID Tools:</strong> Verify with Go/No‑Go gauges or boards.</li>
         </ol>
-        <div class="finder-button-wrap">
-          <span>🛠️ <strong>Need help identifying?</strong> Try the Fitting Finder:</span>
-          <a href="#/finder" class="guide-btn small-btn">Open Fitting Finder</a>
-        </div>
+       <div class="finder-button-wrap">
+  <span>🛠️ <strong>Need help identifying?</strong> Try the Fitting Finder:</span>
+  <a href="#/finder" class="guide-btn small-btn">Open Fitting Finder</a>
+</div>
+
       </div>
 
       <!-- 4. Fitting Selection Criteria -->
