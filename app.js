@@ -1,6 +1,15 @@
 // app.js
 import { loadFittingsPage } from './pages/fittings.js';
 import { loadFittingFinderPage } from './pages/fitting-finder.js';
+import { loadGuidePage } from './pages/guide.js';
+
+const routes = {
+  '/': () => { /* ... */ },
+  '/fittings': loadFittingsPage,
+  '/finder': loadFittingFinderPage,
+  '/guide': loadGuidePage   // New Route!
+};
+
 
 const routes = {
   '/': () => {
