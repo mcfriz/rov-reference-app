@@ -3,16 +3,17 @@ export function loadGuidePage() {
   const app = document.getElementById('app');
   if (!app) return;
 
-
   app.innerHTML = `
     <section class="guide-container">
       <h2>Hydraulic Fitting Guide for ROV Operations</h2>
 
+      <!-- 1. Introduction -->
       <div class="guide-card">
         <h3>1. Introduction</h3>
         <p>This guide is for ROV technicians, supervisors, and engineers working offshore in subsea environments. It provides essential information on identifying, selecting, and safely using hydraulic fittings across a range of ROV systems, with practical guidance tailored to real-world conditions.</p>
       </div>
 
+      <!-- 2. Common Hydraulic Fitting Types -->
       <div class="guide-card">
         <h3>2. Common Hydraulic Fitting Types Used on ROVs</h3>
         <ul>
@@ -21,23 +22,29 @@ export function loadGuidePage() {
           <li><strong>BSPP:</strong> Found on many European valves and components, uses bonded washers to seal.</li>
           <li><strong>NPT:</strong> Tapered thread fittings used on legacy or low-pressure systems.</li>
           <li><strong>DIN/Metric:</strong> Robust and vibration-resistant 24° cone fittings common in European equipment.</li>
-          <li><strong>Ermeto:</strong> DIN 2353 metric style with 24° cone and cutting ring, compact and subsea-suitable.</li>
+          <li><strong>Ermeto:</strong> DIN 2353 metric style with 24° cone and cutting ring, compact and subsea-suitable.</li>
           <li><strong>Quick Disconnects (QDs):</strong> Tool-free connections found in tooling interfaces and hot stabs.</li>
         </ul>
       </div>
 
+      <!-- 3. Fitting Identification Guide -->
       <div class="guide-card">
         <h3>3. Fitting Identification Guide</h3>
         <ol>
           <li><strong>Clean the Fitting:</strong> Remove oil and corrosion for clear inspection.</li>
           <li><strong>Measure Thread Diameter (OD):</strong> Use calipers across thread crests.</li>
           <li><strong>Determine Thread Type:</strong> Use pitch gauges and inspect thread angle.</li>
-          <li><strong>Check Seal Type:</strong> O-ring, flare face, bonded washer, or cone.</li>
+          <li><strong>Check Seal Type:</strong> O‑ring, flare face, bonded washer, or cone.</li>
           <li><strong>Look for Markings:</strong> Some fittings have codes or logos.</li>
-          <li><strong>Use Thread ID Tools:</strong> Verify with Go/No-Go gauges or boards.</li>
+          <li><strong>Use Thread ID Tools:</strong> Verify with Go/No‑Go gauges or boards.</li>
         </ol>
+        <div class="finder-button-wrap">
+          <span>🛠️ <strong>Need help identifying?</strong> Try the Fitting Finder:</span>
+          <a href="#/finder" class="guide-btn small-btn">Open Fitting Finder</a>
+        </div>
       </div>
 
+      <!-- 4. Fitting Selection Criteria -->
       <div class="guide-card">
         <h3>4. Fitting Selection Criteria</h3>
         <ul>
@@ -50,6 +57,7 @@ export function loadGuidePage() {
         </ul>
       </div>
 
+      <!-- 5. Assembly Best Practices -->
       <div class="guide-card">
         <h3>5. Assembly Best Practices</h3>
         <ul>
@@ -61,46 +69,26 @@ export function loadGuidePage() {
         </ul>
       </div>
 
+      <!-- 6. Common Fitting Issues & Troubleshooting -->
       <div class="guide-card">
         <h3>6. Common Fitting Issues & Troubleshooting</h3>
-        <table class="result-table">
+        <table class="guide-table">
           <thead>
             <tr>
-              <th>Issue</th>
-              <th>Possible Cause</th>
-              <th>Corrective Action</th>
+              <th>Issue</th><th>Possible Cause</th><th>Corrective Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Leaking fitting</td>
-              <td>Damaged seal or incorrect fitting</td>
-              <td>Inspect seal, verify type</td>
-            </tr>
-            <tr>
-              <td>Thread galling</td>
-              <td>Stainless threads assembled dry</td>
-              <td>Use anti-seize or proper lube</td>
-            </tr>
-            <tr>
-              <td>Loose after install</td>
-              <td>No locking feature, vibration</td>
-              <td>Use locknut or retention method</td>
-            </tr>
-            <tr>
-              <td>Stripped threads</td>
-              <td>Cross-thread or over-torque</td>
-              <td>Replace part, inspect mating side</td>
-            </tr>
-            <tr>
-              <td>Corrosion or pitting</td>
-              <td>Seawater ingress, poor material</td>
-              <td>Use duplex or coated fittings</td>
-            </tr>
+            <tr><td>Leaking fitting</td><td>Damaged seal or incorrect fitting</td><td>Inspect seal, verify type</td></tr>
+            <tr><td>Thread galling</td><td>Stainless threads assembled dry</td><td>Use anti-seize or proper lube</td></tr>
+            <tr><td>Loose after install</td><td>No locking feature, vibration</td><td>Use locknut or retention method</td></tr>
+            <tr><td>Stripped threads</td><td>Cross-thread or over-torque</td><td>Replace part, inspect mating side</td></tr>
+            <tr><td>Corrosion or pitting</td><td>Seawater ingress, poor material</td><td>Use duplex or coated fittings</td></tr>
           </tbody>
         </table>
       </div>
 
+      <!-- 7. Safety Notes -->
       <div class="guide-card">
         <h3>7. Safety Notes</h3>
         <ul>
