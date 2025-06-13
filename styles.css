@@ -343,6 +343,73 @@ tr.highlight {
 .guide-btn:hover {
   background-color: var(--secondary);
 }
+.guide-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.guide-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.guide-card h3 {
+  margin-top: 0;
+  color: var(--primary);
+  font-size: 1.25rem;
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 0.25rem;
+}
+
+.guide-card p,
+.guide-card ul,
+.guide-card ol {
+  margin-top: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.guide-card ul,
+.guide-card ol {
+  padding-left: 1.2rem;
+}
+
+.guide-card li {
+  margin-bottom: 0.5rem;
+}
+
+/* Table within guide */
+.guide-card table {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.guide-card th,
+.guide-card td {
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.guide-card th {
+  background: var(--secondary);
+  color: white;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .guide-card {
+    padding: 1rem;
+  }
+  .guide-card h3 {
+    font-size: 1.1rem;
+  }
+}
 
 
 }
