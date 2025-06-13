@@ -1,90 +1,114 @@
 // pages/guide.js
 export function loadGuidePage() {
   const app = document.getElementById('app');
-  if (!app) return console.error('#app not found');
+  if (!app) return;
 
   app.innerHTML = `
-    <h2>Hydraulic Fitting Guide for ROV Operations</h2>
-    <div class="guide-container">
-      ${renderSection('1. Introduction', `
+    <section class="guide-container">
+      <h2>Hydraulic Fitting Guide for ROV Operations</h2>
+
+      <div class="guide-card">
+        <h3>1. Introduction</h3>
         <p>This guide is for ROV technicians, supervisors, and engineers working offshore in subsea environments. It provides essential information on identifying, selecting, and safely using hydraulic fittings across a range of ROV systems, with practical guidance tailored to real-world conditions.</p>
-      `)}
-
-      ${renderSection('2. Common Hydraulic Fitting Types Used on ROVs', `
-        <ul>
-          <li><strong>JIC (37° Flare):</strong> Metal-to-metal flare with UNF threads. Common in manipulators, hoses, and valve packs.</li>
-          <li><strong>ORB (O-Ring Boss):</strong> Straight threads with O-ring seal. Ideal for manifolds and sensors.</li>
-          <li><strong>BSPP:</strong> Parallel threads sealed with a bonded washer. Used in many European components.</li>
-          <li><strong>NPT:</strong> Tapered threads that seal by interference. Typical for legacy equipment.</li>
-          <li><strong>DIN/Metric (24° Cone):</strong> Compression-based 24° cone. Used in high-vibration, European-rated subsystems.</li>
-          <li><strong>Ermeto:</strong> DIN 2353 cutting-ring metric fitting. Compact, stainless, vibration-resistant subsea use.</li>
-          <li><strong>Quick Disconnects (QDs):</strong> Tool-free connect/disconnect. Great for tooling, hot stabs, and test access.</li>
-        </ul>
-      `)}
-
-      ${renderSection('3. Fitting Identification Guide', `
-        <ol>
-          <li><strong>Clean the Fitting:</strong> Remove oil, grime, corrosion.</li>
-          <li><strong>Measure Thread OD:</strong> Use calipers to measure crest-to-crest diameter.</li>
-          <li><strong>Measure Thread Pitch:</strong> Use a gauge: 60° = UNF/JIC/ORB, 55° = BSP.</li>
-          <li><strong>Inspect Seal Type:</strong> Determine if it’s flare face, O-ring, bonded washer, cone, or tapered.</li>
-          <li><strong>Look for Markings:</strong> Like Parker or Ermeto code stamps.</li>
-          <li><strong>Use Fitting Board:</strong> Go/No-Go gauge included in some ROV kits.</li>
-          <li><strong>Confirm Identity:</strong> Compare with known fittings or OEM diagrams.</li>
-        </ol>
-      `)}
-
-      ${renderSection('4. Fitting Selection Criteria', `
-        <ul>
-          <li><strong>Pressure Rating:</strong> Meet or exceed system pressure.</li>
-          <li><strong>Material:</strong> Use 316 stainless or corrosion-resistant alloy for subsea.</li>
-          <li><strong>Seal Compatibility:</strong> Ensure FKM/NBR O-ring works with fluid type.</li>
-          <li><strong>Vibration Resistance:</strong> Consider design and coupling clamp.</li>
-          <li><strong>Accessibility:</strong> Check for wrench clearance, bend radius, ease of disconnect.</li>
-          <li><strong>Locking:</strong> Use clips, locknuts near high-vibration or mobile joints.</li>
-        </ul>
-      `)}
-
-      ${renderSection('5. Assembly Best Practices', `
-        <ul>
-          <li><strong>Clean Components:</strong> Avoid contamination.</li>
-          <li><strong>Use Correct Torque:</strong> Over/under torque causes leaks or damage.</li>
-          <li><strong>Sealants:</strong> Use only on NPT. Never on flare or O-ring fittings.</li>
-          <li><strong>Anti-Seize Paste:</strong> On stainless connections to prevent galling.</li>
-          <li><strong>Witness Mark:</strong> Paint pen mark after final torque.</li>
-        </ul>
-      `)}
-
-      ${renderSection('6. Common Fitting Issues & Troubleshooting', `
-        <table>
-          <tr><th>Issue</th><th>Cause</th><th>Action</th></tr>
-          <tr><td>Leaking</td><td>Damaged seal/mis-ID/torque issue</td><td>Replace, verify fitting, torque properly</td></tr>
-          <tr><td>Thread galling</td><td>Stainless-on-stainless with dry threads</td><td>Use anti-seize paste</td></tr>
-          <tr><td>Loosening</td><td>No locking feature</td><td>Add locknuts or bracket</td></tr>
-          <tr><td>Stripped threads</td><td>Cross-thread or overtight</td><td>Replace and carefully thread</td></tr>
-          <tr><td>Corrosion</td><td>Wrong alloy or water ingress</td><td>Use 316/duplex, improve seal/drainage</td></tr>
-        </table>
-      `)}
-
-      ${renderSection('7. Safety Notes', `
-        <ul>
-          <li>🔹 Ensure system is depressurized before loosening fittings.</li>
-          <li>🔹 Wear PPE: gloves, face shield, coveralls.</li>
-          <li>🔹 Record fitting changes in system log.</li>
-          <li>🔹 Dispose of contaminated fluids/seals per environmental guidelines.</li>
-        </ul>
-      `)}
-    </div>
-  `;
-}
-
-function renderSection(title, contentHtml) {
-  return `
-    <div class="guide-section">
-      <h3>${title}</h3>
-      <div class="guide-body">
-        ${contentHtml}
       </div>
-    </div>
+
+      <div class="guide-card">
+        <h3>2. Common Hydraulic Fitting Types Used on ROVs</h3>
+        <ul>
+          <li><strong>JIC (37° Flare):</strong> Common on manipulators, hoses, and valve packs due to their high-pressure rating.</li>
+          <li><strong>ORB (O-Ring Boss):</strong> Compact and ideal for manifold and sensor connections.</li>
+          <li><strong>BSPP:</strong> Found on many European valves and components, uses bonded washers to seal.</li>
+          <li><strong>NPT:</strong> Tapered thread fittings used on legacy or low-pressure systems.</li>
+          <li><strong>DIN/Metric:</strong> Robust and vibration-resistant 24° cone fittings common in European equipment.</li>
+          <li><strong>Ermeto:</strong> DIN 2353 metric style with 24° cone and cutting ring, compact and subsea-suitable.</li>
+          <li><strong>Quick Disconnects (QDs):</strong> Tool-free connections found in tooling interfaces and hot stabs.</li>
+        </ul>
+      </div>
+
+      <div class="guide-card">
+        <h3>3. Fitting Identification Guide</h3>
+        <ol>
+          <li><strong>Clean the Fitting:</strong> Remove oil and corrosion for clear inspection.</li>
+          <li><strong>Measure Thread Diameter (OD):</strong> Use calipers across thread crests.</li>
+          <li><strong>Determine Thread Type:</strong> Use pitch gauges and inspect thread angle.</li>
+          <li><strong>Check Seal Type:</strong> O-ring, flare face, bonded washer, or cone.</li>
+          <li><strong>Look for Markings:</strong> Some fittings have codes or logos.</li>
+          <li><strong>Use Thread ID Tools:</strong> Verify with Go/No-Go gauges or boards.</li>
+        </ol>
+      </div>
+
+      <div class="guide-card">
+        <h3>4. Fitting Selection Criteria</h3>
+        <ul>
+          <li><strong>Pressure Rating:</strong> Match or exceed system operating pressure.</li>
+          <li><strong>Material Compatibility:</strong> Use 316 stainless or corrosion-safe alloys.</li>
+          <li><strong>Seal Compatibility:</strong> Check hydraulic fluid compatibility.</li>
+          <li><strong>Environmental Resistance:</strong> Consider vibration and seawater exposure.</li>
+          <li><strong>Access & Orientation:</strong> Evaluate tool clearance and alignment.</li>
+          <li><strong>Locking Features:</strong> Use retainer clips or locknuts in high-vibration zones.</li>
+        </ul>
+      </div>
+
+      <div class="guide-card">
+        <h3>5. Assembly Best Practices</h3>
+        <ul>
+          <li>Clean parts before assembly to avoid contamination.</li>
+          <li>Apply correct torque per manufacturer spec.</li>
+          <li>Use thread sealants only on tapered threads like NPT.</li>
+          <li>Apply anti-galling paste to stainless threads.</li>
+          <li>Mark after tightening with a paint pen for inspection.</li>
+        </ul>
+      </div>
+
+      <div class="guide-card">
+        <h3>6. Common Fitting Issues & Troubleshooting</h3>
+        <table class="result-table">
+          <thead>
+            <tr>
+              <th>Issue</th>
+              <th>Possible Cause</th>
+              <th>Corrective Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Leaking fitting</td>
+              <td>Damaged seal or incorrect fitting</td>
+              <td>Inspect seal, verify type</td>
+            </tr>
+            <tr>
+              <td>Thread galling</td>
+              <td>Stainless threads assembled dry</td>
+              <td>Use anti-seize or proper lube</td>
+            </tr>
+            <tr>
+              <td>Loose after install</td>
+              <td>No locking feature, vibration</td>
+              <td>Use locknut or retention method</td>
+            </tr>
+            <tr>
+              <td>Stripped threads</td>
+              <td>Cross-thread or over-torque</td>
+              <td>Replace part, inspect mating side</td>
+            </tr>
+            <tr>
+              <td>Corrosion or pitting</td>
+              <td>Seawater ingress, poor material</td>
+              <td>Use duplex or coated fittings</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="guide-card">
+        <h3>7. Safety Notes</h3>
+        <ul>
+          <li>Depressurize system before opening any fitting.</li>
+          <li>Wear gloves, face shield, and coveralls.</li>
+          <li>Log all hydraulic changes in the operations log.</li>
+          <li>Dispose of hydraulic waste per environmental policy.</li>
+        </ul>
+      </div>
+    </section>
   `;
 }
