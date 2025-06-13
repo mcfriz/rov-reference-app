@@ -31,7 +31,8 @@ header h1 {
   margin-bottom: 0.5rem;
 }
 
-.header-flex {
+.header-flex,
+.header-bar {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -42,8 +43,6 @@ header h1 {
   width: auto;
   margin-right: 1rem;
 }
-
-
 
 nav ul {
   display: flex;
@@ -222,13 +221,11 @@ tr.highlight {
   margin: 0;
 }
 
-
 .card-body li {
   margin-bottom: 0.5rem;
   padding-left: 1rem;
   text-indent: -0.75rem;
 }
-
 
 /* How-to-measure image */
 .measure-img {
@@ -241,7 +238,88 @@ tr.highlight {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-/* Mobile responsiveness */
+/* Guide styles */
+.guide-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-bottom: 2rem;
+}
+
+.guide-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.guide-card h3 {
+  margin-top: 0;
+  color: var(--primary);
+  font-size: 1.3rem;
+  border-bottom: 3px solid var(--accent);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.guide-card p,
+.guide-card ul,
+.guide-card ol {
+  margin-top: 1rem;
+  line-height: 1.75;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.guide-card ul,
+.guide-card ol {
+  padding-left: 1.5rem;
+}
+
+.guide-card li {
+  margin-bottom: 0.75rem;
+}
+
+.guide-card table {
+  width: 100%;
+  margin-top: 1.25rem;
+  border-collapse: collapse;
+  font-size: 0.97rem;
+}
+
+.guide-card th,
+.guide-card td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.guide-card th {
+  background: var(--secondary);
+  color: white;
+}
+
+/* TOC sidebar */
+.guide-toc {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background: white;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.guide-toc li {
+  margin-bottom: 0.5rem;
+}
+.guide-toc a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* Mobile styles */
 @media (max-width: 600px) {
   nav ul {
     flex-direction: column;
@@ -265,120 +343,38 @@ tr.highlight {
   }
 
   .header-bar {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.logo {
-  height: 36px;
-  width: auto;
-  border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  flex-shrink: 0;
-}
-
-@media (max-width: 480px) {
-  .header-bar {
     flex-direction: row;
     justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
+
   .logo {
     height: 32px;
   }
-}
-/* Enhance guide readability and spacing */
-.guide-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  padding-bottom: 2rem;
-}
 
-.guide-card {
-  background: white;
-  border-radius: 8px;
-  padding: 1.75rem 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-}
-
-.guide-card h3 {
-  margin-top: 0;
-  color: var(--primary);
-  font-size: 1.3rem;
-  border-bottom: 3px solid var(--accent);
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-}
-
-.guide-card p,
-.guide-card ul,
-.guide-card ol {
-  margin-top: 1rem;
-  line-height: 1.75;
-  font-size: 1rem;
-  color: var(--text);
-}
-
-.guide-card ul,
-.guide-card ol {
-  padding-left: 1.5rem;
-}
-
-.guide-card li {
-  margin-bottom: 0.75rem;
-}
-
-/* Table rounding for clarity */
-.guide-card table {
-  width: 100%;
-  margin-top: 1.25rem;
-  border-collapse: collapse;
-  font-size: 0.97rem;
-}
-
-.guide-card th,
-.guide-card td {
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  text-align: left;
-}
-
-.guide-card th {
-  background: var(--secondary);
-  color: white;
-}
-
-/* iPhone responsive tweaks */
-@media (max-width: 600px) {
   .guide-card {
     padding: 1.25rem 1rem;
   }
+
   .guide-card h3 {
     font-size: 1.2rem;
   }
+
   .guide-card p,
   .guide-card ul,
   .guide-card ol {
     font-size: 0.97rem;
     line-height: 1.6;
   }
+
   .guide-card li {
     margin-bottom: 0.65rem;
   }
+
   .guide-card table th,
   .guide-card table td {
     padding: 0.6rem;
     font-size: 0.9rem;
   }
-}
-
-/* Optional: subtle letter spacing in headings */
-.guide-card h3 {
-  letter-spacing: 0.5px;
-}
-
-
-
 }
