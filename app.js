@@ -4,14 +4,6 @@ import { loadFittingFinderPage } from './pages/fitting-finder.js';
 import { loadGuidePage } from './pages/guide.js';
 
 const routes = {
-  '/': () => { /* ... */ },
-  '/fittings': loadFittingsPage,
-  '/finder': loadFittingFinderPage,
-  '/guide': loadGuidePage   // New Route!
-};
-
-
-const routes = {
   '/': () => {
     renderContent(`
       <h2>Welcome to the ROV Reference App</h2>
@@ -20,6 +12,7 @@ const routes = {
   },
   '/fittings': loadFittingsPage,
   '/finder': loadFittingFinderPage,
+  '/guide': loadGuidePage, // now correctly included
   '/404': () => {
     renderContent('<h2>404 - Page not found</h2>');
   }
@@ -31,7 +24,6 @@ function renderContent(html) {
     console.error("Main container '#app' not found");
     return;
   }
-
   app.classList.add('fade-out');
   setTimeout(() => {
     app.innerHTML = html;
