@@ -2,6 +2,7 @@
 import { loadFittingsPage } from './pages/fittings.js';
 import { loadFittingFinderPage } from './pages/fitting-finder.js';
 import { loadGuidePage } from './pages/guide.js';
+import { loadManipulatorPage } from './pages/manipulators.js';
 
 const routes = {
   '/': () => {
@@ -12,7 +13,8 @@ const routes = {
   },
   '/fittings': loadFittingsPage,
   '/finder': loadFittingFinderPage,
-  '/guide': loadGuidePage, // now correctly included
+  '/guide': loadGuidePage, 
+  '/manipulators': loadManipulatorPage,
   '/404': () => {
     renderContent('<h2>404 - Page not found</h2>');
   }

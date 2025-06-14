@@ -491,3 +491,25 @@ tr.highlight {
     display: flex;
   }
 }
+.tab-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: bold;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+  background: var(--secondary);
+}
