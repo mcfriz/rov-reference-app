@@ -100,11 +100,14 @@ footer {
   color: white;
   font-weight: bold;
   font-size: 1rem;
+  font-family: inherit;
   cursor: pointer;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   transition: background 0.3s;
+  text-decoration: none;
 }
+
 
 .top-link:hover,
 .dropdown-toggle:hover {
@@ -156,11 +159,16 @@ footer {
   box-shadow: none;
 }
 
-.active-link {
-  background: var(--accent-light);
+.active-link,
+.active-parent > .dropdown-toggle {
+  background: #f9f9f9;
   color: var(--text);
   font-weight: bold;
+  border-left: 4px solid var(--accent);
+  padding-left: calc(1rem - 4px);
 }
+
+
 
 /* === Mobile Nav === */
 @media (max-width: 768px) {

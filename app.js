@@ -59,12 +59,30 @@ function router() {
     route();
 
     // Highlight active link
-    document.querySelectorAll('.menu a').forEach(link => {
-      link.classList.remove('active-link');
-      if (link.getAttribute('href') === `#${path}`) {
-        link.classList.add('active-link');
-      }
-    });
+    // Remove all highlights
+document.querySelectorAll('.menu a').forEach(link => link.classList.remove('active-link'));
+document.querySelectorAll('.dropdown-parent').forEach(parent => parent.classList.remove('active-parent'));
+
+// Highlight current link
+document.querySelectorAll('.menu a').forEach(link => {
+  if (link.getAttribute('href') === `#${path}`) {
+    link.classList.add('active-link');
+
+    // Also highlight parent menu (if any)
+    const parentLi = link.closest('.dropdown-parent');
+    if (parentLi) {
+      parentLi.classList.add('active-parent');
+    }
+
+    // If nested (e.g. Hydraulic), go one more level up
+    const nested = link.closest('.nested-parent');
+    if (nested) {
+      const topParent = nested.closest('.dropdown-parent');
+      if (topParent) topParent.classList.add('active-parent');
+    }
+  }
+});
+
 
     // Collapse dropdowns
     document.querySelectorAll('.dropdown-parent').forEach(li => li.classList.remove('active'));
