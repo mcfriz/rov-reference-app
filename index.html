@@ -8,8 +8,8 @@
   <!-- PWA manifest & theme -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#ffa600" />
-  <link rel="icon" type="image/png" href="/rov-reference-app/icons/icon-192.png">
-  <link rel="preload" as="image" href="/rov-reference-app/icons/icon-192.png" />
+  <link rel="icon" type="image/png" href="icons/icon-192.png" />
+  <link rel="preload" as="image" href="icons/icon-192.png" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
@@ -21,15 +21,34 @@
       <img src="icons/icon-192.png" alt="ROV Logo" class="logo" />
       <h1>ROV Reference</h1>
     </div>
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
-    <nav class="nav-menu" id="mainNav">
-      <ul>
-        <li><a href="#/" data-link>Home</a></li>
-        <li><a href="#/fittings" data-link>Fittings Calculator</a></li>
-        <li><a href="#/finder" data-link>Fitting Finder</a></li>
-        <li><a href="#/guide" data-link>Fitting Guide</a></li>
-        <li><a href="#/manipulators" data-link>Manipulator Reference</a></li>
 
+    <nav class="main-nav" id="mainNav">
+      <ul class="menu">
+        <li><a href="#/" class="top-link">🏠 Home</a></li>
+
+        <li class="dropdown-parent">
+          <button class="dropdown-toggle">📋 Operations ▾</button>
+          <ul class="dropdown">
+            <li><a href="#/operations" data-link>Operations Home</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown-parent">
+          <button class="dropdown-toggle">🛠 Maintenance ▾</button>
+          <ul class="dropdown">
+            <li class="nested-parent">
+              <button class="dropdown-toggle">💧 Hydraulic ▾</button>
+              <ul class="dropdown nested-dropdown">
+                <li><a href="#/fittings" data-link>Fitting Calculator</a></li>
+                <li><a href="#/finder" data-link>Fitting Finder</a></li>
+                <li><a href="#/guide" data-link>Fitting Guide</a></li>
+              </ul>
+            </li>
+            <li><a href="#/electrical" data-link>⚡ Electrical</a></li>
+            <li><a href="#/fiber" data-link>📡 Fiber</a></li>
+            <li><a href="#/manipulators" data-link>🦾 Manipulator Reference</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </div>
@@ -63,7 +82,7 @@
   }
 </script>
 
-<!-- PWA Install Prompt with Success Toast -->
+<!-- PWA Install Prompt -->
 <script>
   let deferredPrompt;
   const installBtn = document.getElementById('installBtn');
@@ -99,16 +118,33 @@
   });
 </script>
 
-<!-- Mobile menu toggle -->
+<!-- Mobile-Friendly Dropdown Toggle -->
 <script>
-  const menuToggle = document.getElementById('menuToggle');
-  const mainNav = document.getElementById('mainNav');
-  menuToggle?.addEventListener('click', () => {
-    mainNav?.classList.toggle('show');
+  // Handle top-level and nested dropdowns
+  document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const parent = e.target.closest('li');
+
+      // If this is a nested menu, toggle only itself
+      if (parent.classList.contains('nested-parent')) {
+        parent.classList.toggle('active');
+      } else {
+        // Collapse other top-level dropdowns
+        document.querySelectorAll('.dropdown-parent').forEach(li => {
+          if (li !== parent) li.classList.remove('active');
+        });
+        parent.classList.toggle('active');
+      }
+
+      e.stopPropagation();
+    });
   });
-  window.addEventListener('hashchange', () => {
-    mainNav?.classList.remove('show');
+
+  // Close all dropdowns when clicking outside
+  document.body.addEventListener('click', () => {
+    document.querySelectorAll('.dropdown-parent, .nested-parent').forEach(li => li.classList.remove('active'));
   });
 </script>
+
 </body>
 </html>

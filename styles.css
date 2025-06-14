@@ -23,54 +23,17 @@ body {
 header {
   background: var(--primary);
   color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 1rem 2rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-header h1 {
-  margin-bottom: 0.5rem;
-}
-
-.header-flex,
-.header-bar {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.logo {
-  height: 40px;
-  width: auto;
-  margin-right: 1rem;
-}
-
-nav ul {
-  display: flex;
-  gap: 1rem;
-  list-style: none;
-  flex-wrap: wrap;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem 0.75rem;
-  border-radius: 5px;
-  transition: background 0.3s;
-}
-
-nav a:hover {
-  background: var(--secondary);
 }
 
 main {
   padding: 2rem;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 1rem auto 0;
   background: white;
   border-radius: 8px;
-  margin-top: 1rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 footer {
@@ -81,6 +44,148 @@ footer {
   margin-top: 2rem;
 }
 
+/* Logo and header */
+.logo {
+  width: 36px;
+  height: 36px;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-title h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* === Navigation === */
+.main-nav {
+  margin-top: 0.5rem;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.menu > li {
+  position: relative;
+}
+
+.top-link,
+.dropdown-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.top-link:hover,
+.dropdown-toggle:hover {
+  background: var(--secondary);
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  background: white;
+  color: var(--text);
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  min-width: 220px;
+  padding: 0.5rem 0;
+  z-index: 999;
+  flex-direction: column;
+}
+
+.dropdown a {
+  display: block;
+  padding: 0.6rem 1rem;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.dropdown a:hover {
+  background: var(--bg);
+}
+
+.dropdown-parent.active > .dropdown,
+.nested-parent.active > .dropdown {
+  display: flex;
+}
+
+
+.nested-parent {
+  position: relative;
+}
+
+.nested-dropdown {
+  position: static;
+  background: #f9f9f9;
+  padding-left: 1rem;
+  box-shadow: none;
+}
+
+.active-link {
+  background: var(--accent-light);
+  color: var(--text);
+  font-weight: bold;
+}
+
+/* === Mobile Nav === */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .dropdown {
+    position: static;
+    box-shadow: none;
+    background: var(--bg);
+  }
+
+  .dropdown a {
+    padding-left: 1.5rem;
+  }
+
+  .nested-dropdown a {
+    padding-left: 2rem;
+  }
+}
+
+/* === Page Elements === */
 .container {
   display: flex;
   flex-direction: column;
@@ -127,9 +232,10 @@ footer {
   padding: 0.75rem 1rem;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }
+
 #installBtn:hover {
   background: var(--accent-light);
 }
@@ -143,11 +249,12 @@ footer {
   color: white;
   padding: 1rem 2rem;
   border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   font-size: 0.95rem;
 }
 
+/* === Tables === */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -175,10 +282,7 @@ tr.highlight {
   font-weight: bold;
 }
 
-.result-section {
-  overflow-x: auto;
-}
-
+/* === Cards / Accordions === */
 .card {
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -217,6 +321,7 @@ tr.highlight {
   text-indent: -0.75rem;
 }
 
+/* === Guide Cards === */
 .guide-container {
   display: flex;
   flex-direction: column;
@@ -278,7 +383,7 @@ tr.highlight {
   color: white;
 }
 
-/* Buttons box */
+/* === Misc === */
 .finder-button-wrap {
   margin-top: 1.5rem;
   padding: 1rem;
@@ -298,7 +403,6 @@ tr.highlight {
   color: var(--primary);
 }
 
-/* Button style */
 .guide-btn,
 .guide-btn.small-btn {
   padding: 0.5rem 1.2rem;
@@ -326,11 +430,13 @@ tr.highlight {
   padding: 1rem;
   border: 1px solid #ddd;
   border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
 .guide-toc li {
   margin-bottom: 0.5rem;
 }
+
 .guide-toc a {
   color: var(--primary);
   text-decoration: none;
@@ -346,151 +452,7 @@ tr.highlight {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.app-header {
-  background: var(--primary);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.logo-title {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.logo-title h1 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-.logo {
-  width: 36px;
-  height: 36px;
-}
-
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: white;
-  cursor: pointer;
-}
-
-.nav-menu ul {
-  display: flex;
-  gap: 1rem;
-  list-style: none;
-}
-
-.nav-menu a {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem 0.75rem;
-  border-radius: 4px;
-  transition: background 0.3s;
-}
-
-.nav-menu a:hover {
-  background: var(--secondary);
-}
-
-@media (max-width: 600px) {
-  nav ul {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  main {
-    padding: 1rem;
-  }
-
-  .card-header {
-    font-size: 0.95rem;
-  }
-
-  .card-body {
-    padding: 0 0.75rem;
-  }
-
-  .header-bar {
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .logo {
-    height: 32px;
-  }
-
-  .guide-card {
-    padding: 1.25rem 1rem;
-  }
-
-  .guide-card h3 {
-    font-size: 1.2rem;
-  }
-
-  .guide-card p,
-  .guide-card ul,
-  .guide-card ol {
-    font-size: 0.97rem;
-    line-height: 1.6;
-  }
-
-  .guide-card li {
-    margin-bottom: 0.65rem;
-  }
-
-  .guide-card table th,
-  .guide-card table td {
-    padding: 0.6rem;
-    font-size: 0.9rem;
-  }
-
-  .finder-button-wrap {
-    align-items: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: var(--primary);
-    width: 100%;
-    display: none;
-    flex-direction: column;
-  }
-
-  .nav-menu ul {
-    flex-direction: column;
-    padding: 0.5rem 1rem;
-  }
-
-  .nav-menu.show {
-    display: flex;
-  }
-}
+/* === Tab Controls (e.g. Manipulators) === */
 .tab-controls {
   display: flex;
   gap: 1rem;
