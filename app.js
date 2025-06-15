@@ -61,6 +61,7 @@ function router() {
     // Highlight active link
     // Remove all highlights
 document.querySelectorAll('.menu a').forEach(link => link.classList.remove('active-link'));
+highlightMobileTab(path);
 document.querySelectorAll('.dropdown-parent').forEach(parent => parent.classList.remove('active-parent'));
 
 // Highlight current link
@@ -94,3 +95,13 @@ window.addEventListener('DOMContentLoaded', () => {
   setTimeout(router, 0);
 });
 window.addEventListener('hashchange', router);
+
+function highlightMobileTab(path) {
+  document.querySelectorAll('.tab-link').forEach(link => {
+    link.classList.remove('active-link');
+    if (link.getAttribute('href') === `#${path}`) {
+      link.classList.add('active-link');
+    }
+  });
+}
+
