@@ -71,57 +71,63 @@ export function loadFittingFinderPage() {
       return;
     }
 
-    const headers = `
-      <tr>
-        <th>${isOuter ? 'Outer Diameter' : 'Inner Diameter'}</th>
-        <th>Fittings Type</th>
-        <th>Thread</th>
-        <th>Tips</th>
-        <th>Size Differance</th>
-      </tr>`;
+    const results = sorted.slice(0, 5);
+    const isMobile = window.innerWidth < 768;
 
-    const rows = sorted.slice(0, 5).map((entry, i) => {
-      const f = entry.fitting;
-      const diameterValue = isOuter ? f.od : f.id;
-      return `
-        <tr class="${i === 0 ? 'highlight bold' : ''}">
-          <td>${diameterValue ?? 'N/A'} mm</td>
-          <td>${f.type}</td>
-          <td>${f.thread}</td>
-          <td>${f.tips && f.tips !== "NULL" ? f.tips : '—'}</td>
-          <td>${entry.diff.toFixed(2)} mm</td>
+    if (isMobile) {
+      // Render result cards
+      resultDiv.innerHTML = results.map(entry => `
+        <div class="fit-card">
+          <div><strong>🔩 Thread:</strong> ${entry.fitting.thread}</div>
+          <div><strong>📏 Type:</strong> ${entry.fitting.type}</div>
+          <div><strong>📐 Size Diff:</strong> ${entry.diff.toFixed(2)} mm</div>
+          <div><strong>💡 Tip:</strong> ${entry.fitting.tips || '–'}</div>
+        </div>
+      `).join('');
+    } else {
+      // Render result table
+      const headers = `
+        <tr>
+          <th>${isOuter ? 'Outer Diameter' : 'Inner Diameter'}</th>
+          <th>Fittings Type</th>
+          <th>Thread</th>
+          <th>Tips</th>
+          <th>Size Difference</th>
         </tr>`;
-    }).join('');
 
- resultDiv.innerHTML = `
-  <div class="table-scroll">
-    <div class="scroll-fade-right"></div>
-    <table class="result-table">
-      <thead>${headers}</thead>
-      <tbody>${rows}</tbody>
-    </table>
-  </div>
-`;
+      const rows = results.map((entry, i) => {
+        const f = entry.fitting;
+        const diameterValue = isOuter ? f.od : f.id;
+        return `
+          <tr class="${i === 0 ? 'highlight bold' : ''}">
+            <td>${diameterValue ?? 'N/A'} mm</td>
+            <td>${f.type}</td>
+            <td>${f.thread}</td>
+            <td>${f.tips && f.tips !== "NULL" ? f.tips : '—'}</td>
+            <td>${entry.diff.toFixed(2)} mm</td>
+          </tr>`;
+      }).join('');
 
-
-
-    const bestMatch = document.querySelector('tr.highlight');
-    if (bestMatch) {
-      bestMatch.classList.add('highlight');
-      // setTimeout(() => bestMatch.classList.remove('highlight'), 2000);
+      resultDiv.innerHTML = `
+        <div class="table-scroll">
+          <table class="result-table">
+            <thead>${headers}</thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>`;
     }
   }
 
+  // Add guide buttons below tool
   const guideButtonWrap = document.createElement('div');
-guideButtonWrap.className = 'finder-button-wrap';
-guideButtonWrap.innerHTML = `
-  <span>📘 <strong>Need help with hydraulic fittings?</strong> View the Fitting Guide:</span>
-  <a href="#/guide" class="guide-btn small-btn"><strong>Open Fitting Guide</strong></a>
-`;
-app.appendChild(guideButtonWrap);
+  guideButtonWrap.className = 'finder-button-wrap';
+  guideButtonWrap.innerHTML = `
+    <span>📘 <strong>Need help with hydraulic fittings?</strong> View the Fitting Guide:</span>
+    <a href="#/guide" class="guide-btn small-btn"><strong>Open Fitting Guide</strong></a>
+  `;
+  app.appendChild(guideButtonWrap);
 
-
-  
+  // Add info accordions
   function addInfoSections() {
     const wrapper = document.createElement('div');
     wrapper.className = 'info-wrapper';
@@ -138,15 +144,11 @@ app.appendChild(guideButtonWrap);
         <div class="card-body">
           <p>Use a caliper and follow these steps:</p>
           <ol>
-            <li><strong>Outer Diameter (OD):</strong> Place the outer jaws of the caliper on the outside edges of the fittings thread.</li>
-            <li><strong>Inner Diameter (ID):</strong> Use the inner jaws to measure the inner opening of the fittings thread.</li>
+            <li><strong>Outer Diameter (OD):</strong> Measure the outside thread edges.</li>
+            <li><strong>Inner Diameter (ID):</strong> Measure the inner opening.</li>
           </ol>
-          <img
-            src="images/how-to-measure.jpg"
-            alt="How to measure outer and inner diameter with calipers"
-            class="measure-img"
-          />
-          <p>For accuracy, measure to at least <strong>0.1 mm</strong> with digital or precision calipers.</p>
+          <img src="images/how-to-measure.jpg" alt="How to measure" class="measure-img" />
+          <p>Use digital calipers for at least 0.1 mm accuracy.</p>
         </div>
       </div>
 
@@ -154,15 +156,16 @@ app.appendChild(guideButtonWrap);
         <button class="card-header">🧵 Fitting Types Explained</button>
         <div class="card-body">
           <ul>
-            <li><strong>Ermeto</strong>: Ermeto fittings are DIN 2353 metric compression fittings with a 24° cone and cutting ring, commonly used in European hydraulic systems. They provide a secure, vibration-resistant, metal-to-metal seal.</li>
-            <li><strong>BSP</strong>: BSPP fittings have parallel threads and seal using a bonded washer (e.g. Dowty seal) against a flat face. Often found on European and legacy ROV equipment, especially valves and cylinders.</li>
-            <li><strong>NPT</strong>: NPT fittings have tapered threads that seal by thread interference, typically using thread tape or sealant. They are less common offshore now but still found on older systems and low-pressure lines.</li>
-            <li><strong>JIC</strong>: JIC fittings use a 37° metal-to-metal flare to create a high-pressure seal, with UNF straight threads. They’re widely used on ROVs for hoses, manipulators, and valve packs due to their reliability and ease of service.</li>
-            <li><strong>ORFS</strong>: ORB fittings use straight threads and a captured O-ring to form a leak-free face seal. They’re common in manifolds, pressure ports, and hydraulic blocks where compact, high-pressure connections are needed.</li>
+            <li><strong>Ermeto</strong>: DIN 2353 compression with a 24° cone and ring.</li>
+            <li><strong>BSP</strong>: British Standard Pipe parallel with bonded seal.</li>
+            <li><strong>NPT</strong>: Tapered thread, seals with PTFE or paste.</li>
+            <li><strong>JIC</strong>: 37° flare, straight UNF threads, high-pressure.</li>
+            <li><strong>ORFS</strong>: O-ring face seal, straight thread, leak-free.</li>
           </ul>
         </div>
       </div>
     `;
+
     resultDiv.insertAdjacentElement('afterend', wrapper);
 
     wrapper.querySelectorAll('.card-header').forEach(btn => {

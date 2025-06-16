@@ -879,3 +879,20 @@ tr.highlight {
     animation: dropdownSlideFade 0.25s ease-out;
   }
 }
+/* === Result Cards (Mobile Layout) === */
+.fit-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.fit-card strong {
+  color: var(--primary);
+  display: inline-block;
+  width: 120px;
+}
