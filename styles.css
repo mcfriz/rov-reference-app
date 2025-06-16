@@ -896,3 +896,9 @@ tr.highlight {
   display: inline-block;
   width: 120px;
 }
+/* === Highlighted Card === */
+.highlight-card {
+  border: 2px solid var(--accent);
+  background: #fff8ef;
+  box-shadow: 0 0 6px rgba(255, 128, 0, 0.3);
+}

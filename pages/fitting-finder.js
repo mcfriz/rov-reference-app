@@ -71,21 +71,26 @@ export function loadFittingFinderPage() {
       return;
     }
 
-    const results = sorted.slice(0, 5);
     const isMobile = window.innerWidth < 768;
+    const results = sorted.slice(0, isMobile ? 3 : 5);
 
     if (isMobile) {
-      // Render result cards
-      resultDiv.innerHTML = results.map(entry => `
-        <div class="fit-card">
-          <div><strong>🔩 Thread:</strong> ${entry.fitting.thread}</div>
-          <div><strong>📏 Type:</strong> ${entry.fitting.type}</div>
-          <div><strong>📐 Size Diff:</strong> ${entry.diff.toFixed(2)} mm</div>
-          <div><strong>💡 Tip:</strong> ${entry.fitting.tips || '–'}</div>
-        </div>
-      `).join('');
+      // Render as cards
+      resultDiv.innerHTML = results.map((entry, i) => {
+        const f = entry.fitting;
+        const dim = isOuter ? f.od : f.id;
+        return `
+          <div class="fit-card ${i === 0 ? 'highlight-card' : ''}">
+            <div><strong>📏 ${isOuter ? 'Outer' : 'Inner'} Diameter:</strong> ${dim ?? 'N/A'} mm</div>
+            <div><strong>🔩 Thread:</strong> ${f.thread}</div>
+            <div><strong>⚙️ Type:</strong> ${f.type}</div>
+            <div><strong>📐 Size Diff:</strong> ${entry.diff.toFixed(2)} mm</div>
+            <div><strong>💡 Tip:</strong> ${f.tips || '–'}</div>
+          </div>
+        `;
+      }).join('');
     } else {
-      // Render result table
+      // Render as table
       const headers = `
         <tr>
           <th>${isOuter ? 'Outer Diameter' : 'Inner Diameter'}</th>
@@ -118,7 +123,7 @@ export function loadFittingFinderPage() {
     }
   }
 
-  // Add guide buttons below tool
+  // Fitting Guide button
   const guideButtonWrap = document.createElement('div');
   guideButtonWrap.className = 'finder-button-wrap';
   guideButtonWrap.innerHTML = `
@@ -127,7 +132,7 @@ export function loadFittingFinderPage() {
   `;
   app.appendChild(guideButtonWrap);
 
-  // Add info accordions
+  // Info card accordion
   function addInfoSections() {
     const wrapper = document.createElement('div');
     wrapper.className = 'info-wrapper';
