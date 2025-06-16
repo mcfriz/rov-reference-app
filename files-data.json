@@ -1,0 +1,12 @@
+{
+  "Manuals": [
+    { "name": "Titan 4 Manipulator Manual", "url": "https://drive.google.com/file/d/xxx/view" },
+    { "name": "Constructor 05 ROV System Manual", "url": "https://drive.google.com/file/d/yyy/view" }
+  ],
+  "Checklists": [
+    { "name": "Hydraulic Inspection", "url": "https://drive.google.com/file/d/zzz/view" }
+  ],
+  "Drawings": [
+    { "name": "ROV Fiber Schematic", "url": "https://drive.google.com/file/d/abc/view" }
+  ]
+}

@@ -3,6 +3,7 @@ import { loadFittingsPage } from './pages/fittings.js';
 import { loadFittingFinderPage } from './pages/fitting-finder.js';
 import { loadGuidePage } from './pages/guide.js';
 import { loadManipulatorPage } from './pages/manipulators.js';
+import { loadFilesPage } from './pages/files.js';
 
 // === ROUTES OBJECT ===
 const routes = {
@@ -29,16 +30,7 @@ const routes = {
     </ul>
   `),
 
-  '/files': () => renderContent(`
-    <h2>Files & Reference Library</h2>
-    <p>Quick access to important documentation and tools:</p>
-    <ul class="link-list">
-      <li><a href="#/manipulators">🦾 Manipulator Specs</a></li>
-      <li><a href="#/guide">📘 Hydraulic Fitting Guide</a></li>
-      <li><a href="manuals/constructor-manual.pdf" target="_blank">📄 Constructor 05 Manual (PDF)</a></li>
-      <li><a href="manuals/titan4-manual.pdf" target="_blank">📄 Titan 4 Manipulator Manual (PDF)</a></li>
-    </ul>
-  `),
+  '/files': loadFilesPage, // ✅ THIS IS THE FIX
 
   '/fittings': loadFittingsPage,
   '/finder': loadFittingFinderPage,

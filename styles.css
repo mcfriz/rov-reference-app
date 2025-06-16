@@ -902,3 +902,35 @@ tr.highlight {
   background: #fff8ef;
   box-shadow: 0 0 6px rgba(255, 128, 0, 0.3);
 }
+/* === File Button Style === */
+.file-link-btn {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #f7f9fb;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.file-link-btn:hover {
+  background: #eaf2f8;
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.card-body .link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.page-subtext {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+}
