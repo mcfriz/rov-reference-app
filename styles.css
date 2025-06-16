@@ -312,9 +312,17 @@ tr.highlight {
 .card-body {
   max-height: 0;
   overflow: hidden;
-  padding: 0 1rem;
   transition: max-height 0.3s ease;
+  padding: 0 1.25rem; /* default collapsed padding */
 }
+
+.card-body.open {
+  max-height: 1000px; /* high enough to fit contents */
+  padding: 1rem 1.25rem; /* padding when open */
+  background: #fff;
+  border-top: 1px solid #ccc;
+}
+
 
 .card-body p,
 .card-body ul,
@@ -933,4 +941,94 @@ tr.highlight {
   font-size: 1rem;
   color: #444;
   line-height: 1.6;
+}
+.category-header {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.25rem;
+}
+
+.file-entry {
+  margin-bottom: 1.5rem;
+}
+
+.quick-links,
+.video-links {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  font-size: 0.95rem;
+}
+
+.quick-links ul {
+  padding-left: 1rem;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.quick-links a,
+.video-links a {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.quick-links a:hover,
+.video-links a:hover {
+  text-decoration: underline;
+}
+/* === File Entry Layout Improvements === */
+.file-entry {
+  padding: 1rem 1.25rem;
+  background: #f9fafc;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+/* Responsive padding for mobile */
+@media (max-width: 768px) {
+  .file-entry {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Container spacing inside each card body */
+.card-body {
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border-top: 1px solid #ccc;
+}
+
+/* Prevents full bleed on large screens */
+.file-section .card {
+  max-width: 800px;
+  margin: 1rem auto;
+}
+
+/* Improve spacing of extras */
+.quick-links,
+.video-links {
+  margin-top: 0.75rem;
+  padding-left: 0.5rem;
+}
+
+.quick-links span,
+.video-links span {
+  font-weight: 600;
+  color: var(--primary);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.quick-links ul {
+  list-style: disc;
+  margin-left: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+iframe {
+  margin-top: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
