@@ -732,3 +732,31 @@ tr.highlight {
   background: #ccc;
   border-radius: 4px;
 }
+/* === Scrollable Table Wrapper === */
+.table-scroll {
+  position: relative;
+  overflow-x: auto;
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 6px;
+  background: white;
+}
+
+/* Subtle fade on right edge */
+.scroll-fade-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 100%;
+  background: linear-gradient(to left, white 40%, transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Show only on small screens */
+@media (min-width: 768px) {
+  .scroll-fade-right {
+    display: none;
+  }
+}
