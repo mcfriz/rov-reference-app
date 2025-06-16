@@ -13,8 +13,6 @@
   padding: 0;
 }
 
-
-/* === ðŸ§± Base Layout === */
 body {
   font-family: 'Segoe UI', Tahoma, sans-serif;
   background: var(--bg);
@@ -52,8 +50,6 @@ footer {
   height: 36px;
 }
 
-
-/* === ðŸ§­ Header + Logo === */
 .app-header {
   position: sticky;
   top: 0;
@@ -81,8 +77,6 @@ footer {
 }
 
 /* === Navigation === */
-
-/* === ðŸ“‘ Navigation (Top + Desktop) === */
 .main-nav {
   margin-top: 0.5rem;
 }
@@ -206,8 +200,6 @@ footer {
   gap: 1rem;
 }
 
-
-/* === ðŸ”§ Input Forms === */
 .input-section label {
   margin-top: 0.5rem;
   display: block;
@@ -271,8 +263,6 @@ footer {
 }
 
 /* === Tables === */
-
-/* === ðŸ§® Tables === */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -301,8 +291,6 @@ tr.highlight {
 }
 
 /* === Cards / Accordions === */
-
-/* === ðŸ§© Cards & Accordions === */
 .card {
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -350,8 +338,6 @@ tr.highlight {
 }
 
 /* === Guide Cards === */
-
-/* === ðŸ“˜ Guide Cards === */
 .guide-container {
   display: flex;
   flex-direction: column;
@@ -414,8 +400,6 @@ tr.highlight {
 }
 
 /* === Misc === */
-
-/* === ðŸ§° Misc Elements === */
 .finder-button-wrap {
   margin-top: 1.5rem;
   padding: 1rem;
@@ -508,8 +492,6 @@ tr.highlight {
   background: var(--secondary);
 }
 /* === Mobile Tab Bar === */
-
-/* === ðŸ“¦ Mobile Tab Bar === */
 .tab-bar {
   position: fixed;
   bottom: 0;
@@ -549,8 +531,6 @@ tr.highlight {
   color: #fff;
 }
 /* === Mobile Tab Bar === */
-
-/* === ðŸ“¦ Mobile Tab Bar === */
 .tab-bar {
   position: fixed;
   bottom: 0;
@@ -596,8 +576,6 @@ tr.highlight {
   }
 }
 /* === Mobile Tab Bar === */
-
-/* === ðŸ“¦ Mobile Tab Bar === */
 .tab-bar {
   position: fixed;
   bottom: 0;
@@ -643,8 +621,6 @@ tr.highlight {
   }
 }
 /* === Burger Menu === */
-
-/* === ðŸ” Burger Button === */
 .burger-btn {
   display: none;
   background: none;
@@ -654,8 +630,6 @@ tr.highlight {
   cursor: pointer;
 }
 
-
-/* === ðŸ“± Mobile Nav + Drawer === */
 @media (max-width: 767px) {
   .main-nav {
     display: none;
@@ -914,8 +888,6 @@ tr.highlight {
   }
 }
 /* === Result Cards (Mobile Layout) === */
-
-/* === ðŸ“Š Fitting Finder Cards === */
 .fit-card {
   background: white;
   border: 1px solid #ddd;
@@ -978,8 +950,6 @@ tr.highlight {
   padding-bottom: 0.25rem;
 }
 
-
-/* === ðŸ“‚ File Viewer Layout === */
 .file-entry {
   margin-bottom: 1.5rem;
 }
@@ -1007,8 +977,6 @@ tr.highlight {
   text-decoration: underline;
 }
 /* === File Entry Layout Improvements === */
-
-/* === ðŸ“‚ File Viewer Layout === */
 .file-entry {
   padding: 1rem 1.25rem;
   background: #f9fafc;
@@ -1070,6 +1038,6 @@ html {
 }
 @supports (-webkit-touch-callout: none) {
   .tab-bar {
-    transform: translateZ(0); /* â›‘ Smooth fix for Chrome iOS */
+    transform: translateZ(0); /* ⛑ Smooth fix for Chrome iOS */
   }
 }
