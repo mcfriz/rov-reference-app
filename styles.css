@@ -713,3 +713,22 @@ tr.highlight {
 .link-list a:hover {
   background: #eef4f8;
 }
+/* === Responsive table wrapper === */
+.table-scroll {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.result-table {
+  width: 100%;
+  min-width: 600px; /* allow horizontal scroll on narrow screens */
+  border-collapse: collapse;
+}
+.table-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
