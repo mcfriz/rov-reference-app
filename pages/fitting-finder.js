@@ -93,12 +93,15 @@ export function loadFittingFinderPage() {
         </tr>`;
     }).join('');
 
-    resultDiv.innerHTML = `
-      <table class="result-table">
-        <thead>${headers}</thead>
-        <tbody>${rows}</tbody>
-      </table>
-    `;
+   resultDiv.innerHTML = `
+  <div class="table-scroll">
+    <table class="result-table">
+      <thead>${headers}</thead>
+      <tbody>${rows}</tbody>
+    </table>
+  </div>
+`;
+
 
     const bestMatch = document.querySelector('tr.highlight');
     if (bestMatch) {
