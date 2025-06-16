@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ✅ FIX: Force mobile tab bar to show on phones (iOS & Android) -->
+  <!-- ✅ Prevent flash + detect mobile for tab bar -->
   <script>
     (function() {
       const style = document.createElement('style');
@@ -33,6 +33,10 @@
         <h1>ROV Reference</h1>
       </div>
 
+      <!-- ✅ Mobile burger menu button -->
+      <button id="burgerBtn" class="burger-btn" aria-label="Menu">☰</button>
+
+      <!-- ✅ Desktop dropdown nav -->
       <nav class="main-nav" id="mainNav">
         <ul class="menu">
           <li><a href="#/" class="top-link">Home</a></li>
@@ -69,7 +73,7 @@
     <noscript>Please enable JavaScript to use this app.</noscript>
   </main>
 
-  <!-- ✅ FIXED POSITION TAB BAR - now outside #app so it doesn’t get overwritten -->
+  <!-- ✅ Bottom mobile tab bar -->
   <div class="tab-bar" id="mobileTabBar">
     <a href="#/" class="tab-link" data-tab="home">🏠<span>Home</span></a>
     <a href="#/operations" class="tab-link" data-tab="ops">⚙️<span>Ops</span></a>
@@ -77,20 +81,35 @@
     <a href="#/manipulators" class="tab-link" data-tab="files">📂<span>Files</span></a>
   </div>
 
+  <!-- ✅ Slide-out drawer for mobile burger menu -->
+  <div id="drawerMenu" class="drawer">
+    <nav>
+      <ul>
+        <li><a href="#/" class="drawer-link">🏠 Home</a></li>
+        <li><a href="#/operations" class="drawer-link">⚙️ Operations</a></li>
+        <li><a href="#/fittings" class="drawer-link">🧮 Fitting Calculator</a></li>
+        <li><a href="#/finder" class="drawer-link">🔍 Fitting Finder</a></li>
+        <li><a href="#/guide" class="drawer-link">📘 Fitting Guide</a></li>
+        <li><a href="#/electrical" class="drawer-link">⚡ Electrical</a></li>
+        <li><a href="#/fiber" class="drawer-link">📡 Fiber</a></li>
+        <li><a href="#/manipulators" class="drawer-link">🦾 Manipulators</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="drawerBackdrop" class="drawer-backdrop"></div>
+
   <footer>
     <p>&copy; 2025 ROV Tools</p>
   </footer>
 
-  <!-- Install App Button -->
+  <!-- PWA install button -->
   <button id="installBtn" style="display: none;">📲 Install App</button>
-
-  <!-- Install Toast -->
   <div id="install-toast" style="display: none;">✅ App successfully installed!</div>
 
-  <!-- JS App Entry -->
+  <!-- App routing logic -->
   <script type="module" src="app.js"></script>
 
-  <!-- Register Service Worker -->
+  <!-- PWA: Service worker -->
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/rov-reference-app/service-worker.js', {
@@ -101,7 +120,7 @@
     }
   </script>
 
-  <!-- PWA Install Prompt -->
+  <!-- PWA install prompt -->
   <script>
     let deferredPrompt;
     const installBtn = document.getElementById('installBtn');
@@ -124,7 +143,6 @@
     window.addEventListener('appinstalled', () => {
       console.log('✅ App successfully installed');
       installBtn.style.display = 'none';
-
       const toast = document.getElementById('install-toast');
       if (toast) {
         toast.style.display = 'block';
@@ -137,8 +155,9 @@
     });
   </script>
 
-  <!-- Mobile-Friendly Dropdown Toggle -->
+  <!-- Nav toggles -->
   <script>
+    // Desktop dropdowns
     document.querySelectorAll('.dropdown-toggle').forEach(btn => {
       btn.addEventListener('click', e => {
         const parent = e.target.closest('li');
@@ -158,7 +177,7 @@
       document.querySelectorAll('.dropdown-parent, .nested-parent').forEach(li => li.classList.remove('active'));
     });
 
-    // ✅ Handle screen resizing or rotation
+    // Handle tab bar visibility on resize
     function updateTabBarVisibility() {
       const tabBar = document.getElementById('mobileTabBar');
       const isMobileDevice = /iPhone|Android|Mobile|iPad/i.test(navigator.userAgent) || window.innerWidth < 768;
@@ -167,6 +186,28 @@
 
     window.addEventListener('resize', updateTabBarVisibility);
     window.addEventListener('DOMContentLoaded', updateTabBarVisibility);
+
+    // Burger drawer logic
+    const burgerBtn = document.getElementById('burgerBtn');
+    const drawer = document.getElementById('drawerMenu');
+    const backdrop = document.getElementById('drawerBackdrop');
+
+    burgerBtn?.addEventListener('click', () => {
+      drawer.classList.add('open');
+      backdrop.classList.add('visible');
+    });
+
+    backdrop?.addEventListener('click', () => {
+      drawer.classList.remove('open');
+      backdrop.classList.remove('visible');
+    });
+
+    document.querySelectorAll('.drawer-link').forEach(link => {
+      link.addEventListener('click', () => {
+        drawer.classList.remove('open');
+        backdrop.classList.remove('visible');
+      });
+    });
   </script>
 </body>
 </html>

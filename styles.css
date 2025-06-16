@@ -612,3 +612,80 @@ tr.highlight {
     display: none !important;
   }
 }
+/* === Burger Menu === */
+.burger-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .main-nav {
+    display: none;
+  }
+
+  .burger-btn {
+    display: block;
+  }
+
+  .drawer {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: white;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1100;
+    padding: 1rem;
+    transition: left 0.3s ease;
+  }
+
+  .drawer nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .drawer-link {
+    display: block;
+    padding: 0.75rem 0;
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .drawer-link:hover {
+    background: var(--bg);
+  }
+
+  .drawer.open {
+    left: 0;
+  }
+
+  .drawer-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1050;
+    display: none;
+  }
+
+  .drawer-backdrop.visible {
+    display: block;
+  }
+}
+/* === Fix: Hide mobile drawer and backdrop on desktop view === */
+@media (min-width: 768px) {
+  .drawer,
+  .drawer-backdrop {
+    display: none !important;
+  }
+}
