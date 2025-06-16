@@ -4,6 +4,7 @@ import { loadFittingFinderPage } from './pages/fitting-finder.js';
 import { loadGuidePage } from './pages/guide.js';
 import { loadManipulatorPage } from './pages/manipulators.js';
 
+// === ROUTES OBJECT ===
 const routes = {
   '/': () => renderContent(`
     <h2>Welcome to the ROV Reference App</h2>
@@ -13,6 +14,30 @@ const routes = {
   '/operations': () => renderContent(`
     <h2>Operations Home</h2>
     <p>Placeholder for operations dashboard or tools.</p>
+  `),
+
+  '/maintenance': () => renderContent(`
+    <h2>Maintenance Home</h2>
+    <p>Select a category:</p>
+    <ul class="link-list">
+      <li><a href="#/fittings">💧 Hydraulic – Fittings Calculator</a></li>
+      <li><a href="#/finder">🔍 Fittings Finder</a></li>
+      <li><a href="#/guide">📘 Fitting Guide</a></li>
+      <li><a href="#/electrical">⚡ Electrical</a></li>
+      <li><a href="#/fiber">📡 Fiber</a></li>
+      <li><a href="#/manipulators">🦾 Manipulator Reference</a></li>
+    </ul>
+  `),
+
+  '/files': () => renderContent(`
+    <h2>Files & Reference Library</h2>
+    <p>Quick access to important documentation and tools:</p>
+    <ul class="link-list">
+      <li><a href="#/manipulators">🦾 Manipulator Specs</a></li>
+      <li><a href="#/guide">📘 Hydraulic Fitting Guide</a></li>
+      <li><a href="manuals/constructor-manual.pdf" target="_blank">📄 Constructor 05 Manual (PDF)</a></li>
+      <li><a href="manuals/titan4-manual.pdf" target="_blank">📄 Titan 4 Manipulator Manual (PDF)</a></li>
+    </ul>
   `),
 
   '/fittings': loadFittingsPage,
@@ -33,6 +58,7 @@ const routes = {
   '/404': () => renderContent(`<h2>404 - Page not found</h2>`)
 };
 
+// === MAIN RENDER FUNCTION ===
 function renderContent(html) {
   const app = document.getElementById('app');
   if (!app) {
@@ -47,6 +73,7 @@ function renderContent(html) {
   }, 150);
 }
 
+// === ROUTER LOGIC ===
 let routeTimeout;
 
 function router() {
@@ -58,44 +85,37 @@ function router() {
     console.log('[Router] Navigating to:', path);
     route();
 
-    // Highlight active link
-    // Remove all highlights
-document.querySelectorAll('.menu a').forEach(link => link.classList.remove('active-link'));
-highlightMobileTab(path);
-document.querySelectorAll('.dropdown-parent').forEach(parent => parent.classList.remove('active-parent'));
+    // === Highlight active menu link ===
+    document.querySelectorAll('.menu a').forEach(link => link.classList.remove('active-link'));
+    highlightMobileTab(path);
+    document.querySelectorAll('.dropdown-parent').forEach(parent => parent.classList.remove('active-parent'));
 
-// Highlight current link
-document.querySelectorAll('.menu a').forEach(link => {
-  if (link.getAttribute('href') === `#${path}`) {
-    link.classList.add('active-link');
+    // Desktop menu highlighting logic
+    document.querySelectorAll('.menu a').forEach(link => {
+      if (link.getAttribute('href') === `#${path}`) {
+        link.classList.add('active-link');
 
-    // Also highlight parent menu (if any)
-    const parentLi = link.closest('.dropdown-parent');
-    if (parentLi) {
-      parentLi.classList.add('active-parent');
-    }
+        // Highlight dropdown parent (if applicable)
+        const parentLi = link.closest('.dropdown-parent');
+        if (parentLi) {
+          parentLi.classList.add('active-parent');
+        }
 
-    // If nested (e.g. Hydraulic), go one more level up
-    const nested = link.closest('.nested-parent');
-    if (nested) {
-      const topParent = nested.closest('.dropdown-parent');
-      if (topParent) topParent.classList.add('active-parent');
-    }
-  }
-});
+        // Highlight top level too if nested
+        const nested = link.closest('.nested-parent');
+        if (nested) {
+          const topParent = nested.closest('.dropdown-parent');
+          if (topParent) topParent.classList.add('active-parent');
+        }
+      }
+    });
 
-
-    // Collapse dropdowns
+    // Collapse open dropdowns
     document.querySelectorAll('.dropdown-parent').forEach(li => li.classList.remove('active'));
   }, 50);
 }
 
-// Ensure router triggers on load and hash change
-window.addEventListener('DOMContentLoaded', () => {
-  setTimeout(router, 0);
-});
-window.addEventListener('hashchange', router);
-
+// === MOBILE TAB BAR HIGHLIGHT ===
 function highlightMobileTab(path) {
   document.querySelectorAll('.tab-link').forEach(link => {
     link.classList.remove('active-link');
@@ -105,3 +125,9 @@ function highlightMobileTab(path) {
   });
 }
 
+// === INIT ROUTING ===
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(router, 0);
+});
+
+window.addEventListener('hashchange', router);
