@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ✅ Prevent flash + detect mobile for tab bar -->
   <script>
-    (function() {
+    (function () {
       const style = document.createElement('style');
       const isMobileDevice = /iPhone|Android|Mobile|iPad/i.test(navigator.userAgent) || window.innerWidth < 768;
       style.textContent = `.tab-bar { display: ${isMobileDevice ? 'flex' : 'none'} !important; }`;
       document.head.appendChild(style);
-      console.log('[TabBar] Mobile detected?', isMobileDevice, '| Width:', window.innerWidth);
     })();
   </script>
 
@@ -16,13 +14,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ROV Reference App</title>
 
-  <!-- PWA manifest & theme -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#ffa600" />
   <link rel="icon" type="image/png" href="icons/icon-192.png" />
-  <link rel="preload" as="image" href="icons/icon-192.png" />
-
-  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -33,37 +27,14 @@
         <h1>ROV Reference</h1>
       </div>
 
-      <!-- ✅ Mobile burger menu button -->
       <button id="burgerBtn" class="burger-btn" aria-label="Menu">☰</button>
 
-      <!-- ✅ Desktop dropdown nav -->
       <nav class="main-nav" id="mainNav">
         <ul class="menu">
-          <li><a href="#/" class="top-link">Home</a></li>
-
-          <li class="dropdown-parent">
-            <button class="dropdown-toggle">Operations</button>
-            <ul class="dropdown">
-              <li><a href="#/operations" data-link>Operations Home</a></li>
-            </ul>
-          </li>
-
-          <li class="dropdown-parent">
-            <button class="dropdown-toggle">Maintenance</button>
-            <ul class="dropdown">
-              <li class="nested-parent">
-                <a href="#" class="dropdown-toggle">💧 Hydraulic ▾</a>
-                <ul class="dropdown nested-dropdown">
-                  <li><a href="#/fittings" data-link>Fitting Calculator</a></li>
-                  <li><a href="#/finder" data-link>Fitting Finder</a></li>
-                  <li><a href="#/guide" data-link>Fitting Guide</a></li>
-                </ul>
-              </li>
-              <li><a href="#/electrical" data-link>⚡ Electrical</a></li>
-              <li><a href="#/fiber" data-link>📡 Fiber</a></li>
-              <li><a href="#/manipulators" data-link>🦾 Manipulator Reference</a></li>
-            </ul>
-          </li>
+          <li><a href="#/" class="top-link">🏠 Home</a></li>
+          <li><a href="#/operations" class="top-link">🧭 Operations</a></li>
+          <li><a href="#/maintenance" class="top-link">🛠️ Maintenance</a></li>
+          <li><a href="#/files" class="top-link">📂 Files</a></li>
         </ul>
       </nav>
     </div>
@@ -73,15 +44,15 @@
     <noscript>Please enable JavaScript to use this app.</noscript>
   </main>
 
-  <!-- ✅ Bottom mobile tab bar -->
- <div class="tab-bar" id="mobileTabBar">
-  <a href="#/" class="tab-link" data-tab="home">🏠<span>Home</span></a>
-  <a href="#/operations" class="tab-link" data-tab="ops">⚙️<span>Ops</span></a>
-  <a href="#/maintenance" class="tab-link" data-tab="maint">🛠️<span>Maint</span></a>
-  <a href="#/files" class="tab-link" data-tab="files">📂<span>Files</span></a>
-</div>
+  <!-- Bottom tab bar for mobile -->
+  <div class="tab-bar" id="mobileTabBar">
+    <a href="#/" class="tab-link" data-tab="home">🏠<span>Home</span></a>
+    <a href="#/operations" class="tab-link" data-tab="ops">⚙️<span>Ops</span></a>
+    <a href="#/maintenance" class="tab-link" data-tab="maint">🛠️<span>Maint</span></a>
+    <a href="#/files" class="tab-link" data-tab="files">📂<span>Files</span></a>
+  </div>
 
-  <!-- ✅ Slide-out drawer for mobile burger menu -->
+  <!-- Slide-out mobile drawer -->
   <div id="drawerMenu" class="drawer">
     <nav>
       <ul>
@@ -93,6 +64,7 @@
         <li><a href="#/electrical" class="drawer-link">⚡ Electrical</a></li>
         <li><a href="#/fiber" class="drawer-link">📡 Fiber</a></li>
         <li><a href="#/manipulators" class="drawer-link">🦾 Manipulators</a></li>
+        <li><a href="#/files" class="drawer-link">📂 Files</a></li>
       </ul>
     </nav>
   </div>
@@ -102,25 +74,21 @@
     <p>&copy; 2025 ROV Tools</p>
   </footer>
 
-  <!-- PWA install button -->
   <button id="installBtn" style="display: none;">📲 Install App</button>
   <div id="install-toast" style="display: none;">✅ App successfully installed!</div>
 
-  <!-- App routing logic -->
   <script type="module" src="app.js"></script>
 
-  <!-- PWA: Service worker -->
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/rov-reference-app/service-worker.js', {
         scope: '/rov-reference-app/'
       })
-      .then(reg => console.log('✅ Service Worker registered:', reg.scope))
-      .catch(err => console.error('❌ Service Worker registration failed:', err));
+        .then(reg => console.log('✅ Service Worker registered:', reg.scope))
+        .catch(err => console.error('❌ Service Worker registration failed:', err));
     }
   </script>
 
-  <!-- PWA install prompt -->
   <script>
     let deferredPrompt;
     const installBtn = document.getElementById('installBtn');
@@ -135,13 +103,11 @@
       if (!deferredPrompt) return;
       deferredPrompt.prompt();
       const { outcome } = await deferredPrompt.userChoice;
-      console.log(`User choice: ${outcome}`);
       installBtn.style.display = 'none';
       deferredPrompt = null;
     });
 
     window.addEventListener('appinstalled', () => {
-      console.log('✅ App successfully installed');
       installBtn.style.display = 'none';
       const toast = document.getElementById('install-toast');
       if (toast) {
@@ -153,31 +119,8 @@
         }, 8000);
       }
     });
-  </script>
 
-  <!-- Nav toggles -->
-  <script>
-    // Desktop dropdowns
-    document.querySelectorAll('.dropdown-toggle').forEach(btn => {
-      btn.addEventListener('click', e => {
-        const parent = e.target.closest('li');
-        if (parent.classList.contains('nested-parent')) {
-          parent.classList.toggle('active');
-        } else {
-          document.querySelectorAll('.dropdown-parent').forEach(li => {
-            if (li !== parent) li.classList.remove('active');
-          });
-          parent.classList.toggle('active');
-        }
-        e.stopPropagation();
-      });
-    });
-
-    document.body.addEventListener('click', () => {
-      document.querySelectorAll('.dropdown-parent, .nested-parent').forEach(li => li.classList.remove('active'));
-    });
-
-    // Handle tab bar visibility on resize
+    // Responsive tab bar
     function updateTabBarVisibility() {
       const tabBar = document.getElementById('mobileTabBar');
       const isMobileDevice = /iPhone|Android|Mobile|iPad/i.test(navigator.userAgent) || window.innerWidth < 768;
