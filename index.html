@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- PREVENT TAB BAR FLASH ON MOBILE -->
+  <!-- ✅ FIX: Force mobile tab bar to show on phones (iOS & Android) -->
   <script>
     (function() {
       const style = document.createElement('style');
-      const isMobile = window.innerWidth < 768;
-      style.textContent = `.tab-bar { display: ${isMobile ? 'flex' : 'none'} !important; }`;
+      const isMobileDevice = /iPhone|Android|Mobile|iPad/i.test(navigator.userAgent) || window.innerWidth < 768;
+      style.textContent = `.tab-bar { display: ${isMobileDevice ? 'flex' : 'none'} !important; }`;
       document.head.appendChild(style);
+      console.log('[TabBar] Mobile detected?', isMobileDevice, '| Width:', window.innerWidth);
     })();
   </script>
 
@@ -68,7 +69,7 @@
     <noscript>Please enable JavaScript to use this app.</noscript>
   </main>
 
-  <!-- ✅ FIXED POSITION MOBILE TAB BAR -->
+  <!-- ✅ FIXED POSITION TAB BAR - now outside #app so it doesn’t get overwritten -->
   <div class="tab-bar" id="mobileTabBar">
     <a href="#/" class="tab-link" data-tab="home">🏠<span>Home</span></a>
     <a href="#/operations" class="tab-link" data-tab="ops">⚙️<span>Ops</span></a>
@@ -141,7 +142,6 @@
     document.querySelectorAll('.dropdown-toggle').forEach(btn => {
       btn.addEventListener('click', e => {
         const parent = e.target.closest('li');
-
         if (parent.classList.contains('nested-parent')) {
           parent.classList.toggle('active');
         } else {
@@ -150,7 +150,6 @@
           });
           parent.classList.toggle('active');
         }
-
         e.stopPropagation();
       });
     });
@@ -159,10 +158,15 @@
       document.querySelectorAll('.dropdown-parent, .nested-parent').forEach(li => li.classList.remove('active'));
     });
 
-    window.addEventListener('resize', () => {
+    // ✅ Handle screen resizing or rotation
+    function updateTabBarVisibility() {
       const tabBar = document.getElementById('mobileTabBar');
-      tabBar.style.display = window.innerWidth < 768 ? 'flex' : 'none';
-    });
+      const isMobileDevice = /iPhone|Android|Mobile|iPad/i.test(navigator.userAgent) || window.innerWidth < 768;
+      tabBar.style.display = isMobileDevice ? 'flex' : 'none';
+    }
+
+    window.addEventListener('resize', updateTabBarVisibility);
+    window.addEventListener('DOMContentLoaded', updateTabBarVisibility);
   </script>
 </body>
 </html>
