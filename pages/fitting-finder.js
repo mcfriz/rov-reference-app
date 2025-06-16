@@ -81,7 +81,7 @@ export function loadFittingFinderPage() {
         const dim = isOuter ? f.od : f.id;
         return `
           <div class="fit-card ${i === 0 ? 'highlight-card' : ''}">
-            <div><strong>📏 ${isOuter ? 'Outer' : 'Inner'} Diameter:</strong> ${dim ?? 'N/A'} mm</div>
+<div><strong>📏 ${isOuter ? 'OD' : 'ID'}:</strong> ${dim ?? 'N/A'} mm</div>
             <div><strong>🔩 Thread:</strong> ${f.thread}</div>
             <div><strong>⚙️ Type:</strong> ${f.type}</div>
             <div><strong>📐 Size Diff:</strong> ${entry.diff.toFixed(2)} mm</div>
