@@ -1032,3 +1032,7 @@ iframe {
   border-radius: 6px;
   border: 1px solid #ccc;
 }
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
