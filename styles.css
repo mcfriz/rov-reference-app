@@ -516,12 +516,7 @@ tr.highlight {
   margin-top: 0.2rem;
 }
 
-/* Hide bottom bar on desktop */
-@media (min-width: 768px) {
-  .tab-bar {
-    display: none;
-  }
-}
+
 .tab-link.active-link {
   background: var(--secondary);
   font-weight: bold;

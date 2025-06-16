@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+  // Prevent tab bar from flashing incorrectly on mobile
+  (function() {
+    const style = document.createElement('style');
+    const isMobile = window.innerWidth < 768;
+    style.textContent = `
+      .tab-bar { display: ${isMobile ? 'flex' : 'none'} !important; }
+    `;
+    document.head.appendChild(style);
+  })();
+</script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ROV Reference App</title>
@@ -129,6 +141,7 @@
 
 <!-- Mobile-Friendly Dropdown Toggle -->
 <script>
+  
   // Handle top-level and nested dropdowns
   document.querySelectorAll('.dropdown-toggle').forEach(btn => {
     btn.addEventListener('click', e => {
@@ -152,6 +165,12 @@
   // Close all dropdowns when clicking outside
   document.body.addEventListener('click', () => {
     document.querySelectorAll('.dropdown-parent, .nested-parent').forEach(li => li.classList.remove('active'));
+  });
+</script>
+<script>
+  window.addEventListener('resize', () => {
+    const tabBar = document.getElementById('mobileTabBar');
+    tabBar.style.display = window.innerWidth < 768 ? 'flex' : 'none';
   });
 </script>
 
