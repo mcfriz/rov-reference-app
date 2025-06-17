@@ -2,11 +2,11 @@
   "Manipulators": {
     "T4": [
       {
-        "name": "Titan 4 Manual",
-        "url": "https://drive.google.com/file/d/abc123/view",
+        "name": "T4 Manual",
+        "url": "https://drive.google.com/file/d/1v4vFk7KXP27tft3SKZe20YIbmWzPE-xu/view?usp=drive_link",
         "quickLinks": [
           { "label": "Overview", "page": 2 },
-          { "label": "Hydraulic Schematic", "page": 12 },
+          { "label": "Bleed position and bleed points", "page": 22 },
           { "label": "Maintenance Table", "page": 29 }
         ],
         "videos": [
