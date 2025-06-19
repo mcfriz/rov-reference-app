@@ -5,6 +5,7 @@
   --text: #20232a;
   --accent: #ff7f00;
   --accent-light: #ffc280;
+  --accent-soft: rgba(255, 127, 0, 0.3);
 }
 
 * {
@@ -1124,5 +1125,5 @@ html {
   margin-bottom: 0.4rem;
 }
 .overview-entry {
-  border-top: 5px solid var(--accent);
+border-top: 5px solid var(--accent-soft);
 }
