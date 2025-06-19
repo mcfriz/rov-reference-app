@@ -1074,17 +1074,23 @@ html {
   }
 }
 .info-header {
-  background: #e0edf5;
-  color: #003350;
-  border: none;
   width: 100%;
-  padding: 0.6rem 1rem;
-  font-weight: 600;
+  text-align: left;
+  
+  color: rgb(0, 0, 0);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
   cursor: pointer;
+  border: none;
   border-radius: 6px;
   margin-top: 1rem;
-  text-align: left;
+  font-family: inherit;
 }
+
+.info-header:hover {
+  background: var(--primary);
+}
+
 
 .info-body {
   overflow: hidden;
@@ -1102,4 +1108,21 @@ html {
 }
 .info-body.open {
   /* No styles needed, JS sets height */
+}
+/* Optional visual polish */
+.info-header:hover {
+  background: #d2e6f1;
+  
+}
+
+.info-body ul {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.info-body li {
+  margin-bottom: 0.4rem;
+}
+.overview-entry {
+  border-top: 5px solid var(--accent);
 }

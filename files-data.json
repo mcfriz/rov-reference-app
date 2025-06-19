@@ -4,7 +4,6 @@
       {
         "name": "T4 Manual",
         "url": "https://drive.google.com/file/d/1v4vFk7KXP27tft3SKZe20YIbmWzPE-xu/view?usp=drive_link",
-       
         "videos": [
           { "label": "Quick Start Video", "url": "https://www.youtube.com/watch?v=abc123" }
         ]
@@ -24,27 +23,51 @@
         "url": "https://drive.google.com/file/d/1CLDHn8_xdV6FC-4w_ff-2bIUOL3AF9U6/view?usp=drive_link"
       }
     ],
-     "Rigmaster": [
+    "Rigmaster": [
       {
         "name": "Rigmaster Manual",
         "url": "https://drive.google.com/file/d/1eA2hJA6M5qTWrNaSUhmyi9gU7YmNvK7f/view?usp=drive_link"
       }
     ]
   },
-
   "ROVs": {
+    "Constructor 01": [
+      {
+        "name": "Constructor 01 Manual",
+        "url": "https://drive.google.com/file/d/xxxxxx01/view"
+      }
+    ],
+    "Constructor 02": [
+      {
+        "name": "Constructor 02 Manual",
+        "url": "https://drive.google.com/file/d/xxxxxx02/view"
+      }
+    ],
     "Constructor 05": [
       {
         "name": "Constructor 05 Manual",
-        "url": "https://drive.google.com/file/d/yyy789/view",
-        "quickLinks": [
-          { "label": "Control Layout", "page": 5 },
-          { "label": "Fault Tree", "page": 18 }
-        ]
+        "url": "https://drive.google.com/file/d/yyy789/view"
+      }
+    ],
+    "Constructor 06": [
+      {
+        "name": "Constructor 06 Manual",
+        "url": "https://drive.google.com/file/d/xxxxxx06/view"
+      }
+    ],
+    "Kystdesign TMS": [
+      {
+        "name": "Kystdesign TMS Manual",
+        "url": "https://drive.google.com/file/d/xxxxxtmskyst/view"
+      }
+    ],
+    "Malm Orstad TMS": [
+      {
+        "name": "Malm Orstad TMS Manual",
+        "url": "https://drive.google.com/file/d/xxxxxtmsmalm/view"
       }
     ]
   },
-
   "Tooling": {
     "Torque Tools": [
       {
@@ -53,7 +76,6 @@
       }
     ]
   },
-
   "Other": {
     "General": [
       {
