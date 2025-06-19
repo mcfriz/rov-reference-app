@@ -4,20 +4,30 @@
       {
         "name": "T4 Manual",
         "url": "https://drive.google.com/file/d/1v4vFk7KXP27tft3SKZe20YIbmWzPE-xu/view?usp=drive_link",
-        "quickLinks": [
-          { "label": "Overview", "page": 2 },
-          { "label": "Bleed position and bleed points", "page": 22 },
-          { "label": "Maintenance Table", "page": 29 }
-        ],
+       
         "videos": [
           { "label": "Quick Start Video", "url": "https://www.youtube.com/watch?v=abc123" }
         ]
+      },
+      {
+        "name": "T4 Torque Cheat Sheet",
+        "url": "https://drive.google.com/file/d/1CLDHn8_xdV6FC-4w_ff-2bIUOL3AF9U6/view?usp=drive_link"
       }
     ],
     "Atlas": [
       {
-        "name": "Atlas Tech Drawing",
-        "url": "https://drive.google.com/file/d/xyz456/view"
+        "name": "Atlas Manual",
+        "url": "https://drive.google.com/file/d/13_d4Ny0NZE54p9na8JFDrIQ4jhD_WzhL/view?usp=drive_link"
+      },
+      {
+        "name": "Atlas Torque Cheat Sheet",
+        "url": "https://drive.google.com/file/d/1CLDHn8_xdV6FC-4w_ff-2bIUOL3AF9U6/view?usp=drive_link"
+      }
+    ],
+     "Rigmaster": [
+      {
+        "name": "Rigmaster Manual",
+        "url": "https://drive.google.com/file/d/1eA2hJA6M5qTWrNaSUhmyi9gU7YmNvK7f/view?usp=drive_link"
       }
     ]
   },

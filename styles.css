@@ -1073,3 +1073,33 @@ html {
     transform: translateZ(0); /* â›‘ Smooth fix for Chrome iOS */
   }
 }
+.info-header {
+  background: #e0edf5;
+  color: #003350;
+  border: none;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.info-body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+  background: #f9f9f9;
+  margin-top: 0.5rem;
+  border-left: 4px solid var(--accent);
+  padding: 0 1rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+.info-body.open {
+  /* Optional visual cue */
+}
+.info-body.open {
+  /* No styles needed, JS sets height */
+}

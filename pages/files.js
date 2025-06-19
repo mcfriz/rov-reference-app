@@ -1,4 +1,41 @@
-// pages/files.js
+// ✅ Info content for subcategories like T4, Constructor 05, etc.
+const infoContentMap = {
+  'T4': {
+    title: 'ℹ️ T4 Overview',
+    body: `
+      <p>The Titan 4 (T4) manipulator is a heavy-duty hydraulic arm developed for deepwater tasks. It offers 7 functions, a high lift-to-weight ratio, and replaceable wrist components.</p>
+      <ul>
+        <li><strong>Mounting:</strong> Side-frame bolted or hot-stab interchangeable base</li>
+        <li><strong>Max Lift:</strong> Approx. 250 kg at full extension in air</li>
+        <li><strong>Rated Depth:</strong> 3,000 m standard (upgradable)</li>
+        <li><strong>Uses:</strong> General intervention, tool handling, valve turning</li>
+      </ul>
+    `
+  },
+  'Constructor 05': {
+    title: 'ℹ️ Constructor 05 Overview',
+    body: `
+      <p>The Constructor 05 is a Kystdesign-built WROV rated for 3,000 m depth with a modular hydraulic system, advanced control, and a powerful tooling suite.</p>
+      <ul>
+        <li><strong>Power:</strong> 150 HP</li>
+        <li><strong>Thrusters:</strong> 7 × Sub-Atlantic brushless</li>
+        <li><strong>Payload:</strong> Up to 300 kg</li>
+        <li><strong>Control:</strong> Fully redundant SCU & HMI</li>
+      </ul>
+    `
+  },
+  'Torque Tools': {
+    title: 'ℹ️ Torque Tool Overview',
+    body: `
+      <p>ROV torque tools allow remote engagement of subsea valves and fasteners. Compatible with Class 1–4 interfaces.</p>
+      <ul>
+        <li><strong>Class:</strong> API 17H Class 1–4</li>
+        <li><strong>Drive:</strong> Hydraulic via ROV valve pack</li>
+        <li><strong>Usage:</strong> Valve operation, latching, subsea intervention</li>
+      </ul>
+    `
+  }
+};
 
 export function loadFilesPage() {
   const app = document.getElementById('app');
@@ -12,28 +49,29 @@ export function loadFilesPage() {
   `;
 
   const section = app.querySelector('.file-section');
-
-  // ✅ Handle local vs GitHub Pages path
   const basePath = location.hostname === '127.0.0.1' ? '' : '/rov-reference-app';
+
   fetch(`${basePath}/files-data.json`)
     .then(res => res.json())
     .then(data => {
       Object.entries(data).forEach(([topLevel, subGroups]) => {
-        // 🔹 Top-level header (e.g., Manipulators)
         const topHeader = document.createElement('h3');
         topHeader.className = 'category-header';
         topHeader.textContent = topLevel;
         section.appendChild(topHeader);
 
-        // 🔹 Sub-category cards (e.g., T4, Atlas)
         Object.entries(subGroups).forEach(([subCat, files]) => {
           const card = document.createElement('div');
           card.className = 'card';
 
+          const fileEntries = files.map(file => renderFileEntry(file)).join('');
+          const infoAccordion = renderInfoAccordion(subCat);
+
           card.innerHTML = `
             <button class="card-header">${subCat}</button>
             <div class="card-body">
-              ${files.map(file => renderFileEntry(file)).join('')}
+              ${fileEntries}
+              ${infoAccordion}
             </div>
           `;
 
@@ -41,25 +79,45 @@ export function loadFilesPage() {
         });
       });
 
-      // ✅ Accordion toggle using class + scrollHeight
-      section.querySelectorAll('.card-header').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const body = btn.nextElementSibling;
-          const isOpen = body.classList.contains('open');
+// ✅ Top-level card expand/collapse with 'auto' height for stability
+section.querySelectorAll('.card-header').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const body = btn.nextElementSibling;
+    const isOpen = body.classList.contains('open');
 
-          // Close all
-          section.querySelectorAll('.card-body').forEach(b => {
-            b.classList.remove('open');
-            b.style.maxHeight = null;
-          });
+    // Close all other cards
+    section.querySelectorAll('.card-body').forEach(b => {
+      b.classList.remove('open');
+      b.style.height = null;
+    });
 
-          // Open clicked
-          if (!isOpen) {
-            body.classList.add('open');
-            body.style.maxHeight = body.scrollHeight + 'px';
-          }
-        });
-      });
+    if (!isOpen) {
+      body.classList.add('open');
+      body.style.height = 'auto'; // 👈 Key fix
+    }
+  });
+});
+
+// ✅ Nested accordion logic – no parent collapse
+section.querySelectorAll('.info-header').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const infoBody = btn.nextElementSibling;
+    const isOpen = infoBody.classList.contains('open');
+
+    // Toggle the nested info body
+    if (isOpen) {
+      infoBody.classList.remove('open');
+      infoBody.style.maxHeight = null;
+    } else {
+      infoBody.classList.add('open');
+      infoBody.style.maxHeight = infoBody.scrollHeight + 'px';
+    }
+
+    // Set parent card-body height to auto to allow nested growth
+    const cardBody = btn.closest('.card-body');
+    cardBody.style.height = 'auto'; // ✅ Keeps parent from collapsing
+  });
+});
     })
     .catch(err => {
       console.error('❌ Failed to load file list:', err);
@@ -67,7 +125,7 @@ export function loadFilesPage() {
     });
 }
 
-// ✅ Render each file with optional links & video
+// ✅ Render each file with quick links and/or videos
 function renderFileEntry(file) {
   const icon = getFileIcon(file.name);
   const fileUrl = file.url || '#';
@@ -104,7 +162,21 @@ function renderFileEntry(file) {
   `;
 }
 
-// ✅ File type to emoji
+// ✅ Render overview accordion for a system like T4
+function renderInfoAccordion(subCat) {
+  const info = infoContentMap[subCat];
+  if (!info) return '';
+  return `
+    <div class="file-entry">
+      <button class="info-header">${info.title}</button>
+      <div class="info-body">
+        ${info.body}
+      </div>
+    </div>
+  `;
+}
+
+// ✅ Convert file extension to emoji icon
 function getFileIcon(filename) {
   const ext = filename.split('.').pop().toLowerCase();
   if (ext === 'pdf') return '📄';
@@ -115,7 +187,7 @@ function getFileIcon(filename) {
   return '📁';
 }
 
-// ✅ YouTube link to embedded player
+// ✅ Convert a YouTube link to embed format
 function convertToEmbed(url) {
   const id = url.includes('watch?v=') ? url.split('watch?v=')[1] : url.split('/').pop();
   return `https://www.youtube.com/embed/${id}`;
