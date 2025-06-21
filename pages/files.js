@@ -1,4 +1,93 @@
 // ✅ Info content for subcategories like T4, Constructor 05, etc.
+const t4VideoGroups = {
+  "Azimuth": [
+    { label: "Removing the azimuth resolver", url: "https://youtu.be/BBacQIZjYzc" },
+    { label: "Re-assembly of the azimuth resolver", url: "https://youtu.be/VspHZ19kKlU" },
+    { label: "Exterior cover re-attach", url: "https://youtu.be/R-BnQIlFpqM" },
+    { label: "Azimuth actuator removal", url: "https://youtu.be/XfzsUxUXTS0" },
+    { label: "Azimuth actuator re assembly", url: "https://youtu.be/dZbqdxKbczs" }
+  ],
+  "Elbow": [
+    { label: "Installing the elbow resolver", url: "https://youtu.be/4BkaSYhx79A" },
+    { label: "Elbow actuator removal", url: "https://youtu.be/iUdxOetclQ4" },
+    { label: "Elbow actuator disassembly", url: "https://youtu.be/gm3GXnFXdyQ" },
+    { label: "Elbow actuator re-assembly", url: "https://youtu.be/if1QAEWQ8zY" },
+    { label: "Elbow actuator re-attach", url: "https://youtu.be/dYXBbipjilo" },
+    { label: "Removing the elbow resolver", url: "https://youtu.be/zmDEwqvp4V8" },
+    { label: "Exterior cover re-attach", url: "https://youtu.be/uuXqxJT0oRA" }
+  ],
+  "Forearm": [
+    { label: "Forearm board servo disassembly", url: "https://youtu.be/aQQGaf1JhcY" },
+    { label: "Forearm board servo re-assembly", url: "https://youtu.be/p90EvudLlkk" },
+    { label: "Intro to resolvers", url: "https://youtu.be/TZqrgIhncKc" },
+    { label: "Exterior cover re-attach", url: "https://youtu.be/SdHey6M0yqc" }
+  ],
+  "Jaw": [
+    { label: "Disassembly of the pin type jaw assy", url: "https://youtu.be/0QGCBP2lw1A" },
+    { label: "Jaw pin re-assembly", url: "https://youtu.be/rX9U-X2AwJk" },
+    { label: "Jaw t-bar design disassembly", url: "https://youtu.be/KYZ7CNZblBQ" },
+    { label: "Jaw t-bar re-assembly", url: "https://youtu.be/neciA1zpsmA" }
+  ],
+  "Master Controller": [
+    { label: "Master controller re-assembly", url: "https://youtu.be/bo6C6b1yj9k" },
+    { label: "Master controller disassembly", url: "https://youtu.be/m4vTGS_MwMo" }
+  ],
+  "Shoulder": [
+    { label: "Removing the shoulder resolver", url: "https://youtu.be/Era2gOtWapo" },
+    { label: "Installing the shoulder resolver", url: "https://youtu.be/REb0lAHXT64" },
+    { label: "Shoulder joint disassembly", url: "https://youtu.be/M2fUi5ULV9E" },
+    { label: "Shoulder joint re-assembly", url: "https://youtu.be/wYkhfEKABO8" },
+    { label: "Exterior cover re-attach", url: "https://youtu.be/SdHey6M0yqc" }
+  ],
+  "Upper Arm": [
+    { label: "Solenoid valve and filter replacement", url: "https://youtu.be/kIySaOuEoqw" },
+    { label: "Linear actuator disassembly", url: "https://youtu.be/zXW7IhCEDPg" },
+    { label: "Linear actuator re-assembly", url: "https://youtu.be/Hws9bqMlazY" },
+    { label: "Filter replacement only", url: "https://youtu.be/gm-USEme5fE" },
+    { label: "Exterior cover re-attach", url: "https://youtu.be/SdHey6M0yqc" }
+  ],
+  "Wrist Pitch Yaw": [
+    { label: "Nose block re-assembly", url: "https://youtu.be/p98Ykk0Gxks" },
+    { label: "Removing the pitch resolver", url: "https://youtu.be/I1Vp9UgXSNk" },
+    { label: "Installing the pitch resolver", url: "https://youtu.be/GeBixweI-3A" },
+    { label: "Removing the yaw resolver", url: "https://youtu.be/6jF3Gaqmoz4" },
+    { label: "Installing the yaw resolver", url: "https://youtu.be/YZplYdMzdpw" },
+    { label: "Removing camera assy", url: "https://youtu.be/fh1HN5RNMTQ" },
+    { label: "Installing the camera assy", url: "https://youtu.be/FrZV0mEBTlo" },
+    { label: "Wrist jaw removal", url: "https://youtu.be/TDcKzvucF8M" },
+    { label: "Wrist jaw resolver LDVT disassembly", url: "https://youtu.be/racOxWicBP8" },
+    { label: "Wrist jaw LVDT resolver assembly", url: "https://youtu.be/RRnnLhcawDE" },
+    { label: "Nose block disassembly", url: "https://youtu.be/90Y-4N8j488" },
+    { label: "Wrist disassembly", url: "https://youtu.be/WjQqLfm2kAw" },
+    { label: "Wrist re-assembly", url: "https://youtu.be/-QFCFxhEsco" },
+    { label: "Wrist jaw re-attach", url: "https://youtu.be/LPgLuRhKi9I" },
+    { label: "Pitch yaw removal", url: "https://youtu.be/5qhOEXb8AWY" },
+    { label: "Pitch yaw re-attach", url: "https://youtu.be/K3XMLv694O8" }
+  ],
+  "Compensation and Testing": [
+    { label: "Weekly re-torquing", url: "https://youtu.be/dqvv1HjVyEQ" },
+    { label: "Testing re-assembled manipulator", url: "https://youtu.be/r4YNADZR-LU" },
+    { label: "Charging the compensation system", url: "https://youtu.be/SgOU01FOU6M" }
+  ]
+};
+
+function renderT4VideoAccordion() {
+  return `
+    <div class="t4-video-section">
+      <h4 class="t4-video-heading">🎥 T4 Training Videos</h4>
+      ${Object.entries(t4VideoGroups).map(([joint, videos]) => `
+        <details class="video-joint">
+          <summary class="joint-summary">${joint}</summary>
+          <ul class="video-list">
+            ${videos.map(v => `<li><a href="${v.url}" target="_blank" class="video-link">▶ ${v.label}</a></li>`).join('')}
+          </ul>
+        </details>
+      `).join('')}
+    </div>
+  `;
+
+}
+
 const infoContentMap = {
   // 🔧 Manipulators
   'T4': {
@@ -131,7 +220,6 @@ const infoContentMap = {
   }
 };
 
-
 export function loadFilesPage() {
   const app = document.getElementById('app');
   if (!app) return;
@@ -149,82 +237,89 @@ export function loadFilesPage() {
     .then(res => res.json())
     .then(data => {
       Object.entries(data).forEach(([topLevel, subGroups]) => {
-        const topHeader = document.createElement('h3');
-        topHeader.className = 'category-header';
-        topHeader.textContent = topLevel;
-        section.appendChild(topHeader);
+        // Create top-level section
+        const group = document.createElement('div');
+        group.className = 'file-group';
 
-        Object.entries(subGroups).forEach(([subCat, files]) => {
-          const card = document.createElement('div');
-          card.className = 'card';
+        const header = document.createElement('button');
+        header.className = 'file-group-header';
+        header.textContent = topLevel;
+        group.appendChild(header);
 
-const infoAccordion = renderInfoAccordion(subCat);
-const fileEntries = files.map(file => renderFileEntry(file)).join('');
+        section.appendChild(group);
 
-card.innerHTML = `
-  <button class="card-header">${subCat}</button>
-  <div class="card-body">
-    ${infoAccordion}
-    ${fileEntries}
-  </div>
-`;
+        // === On click, replace page content with subcategory view ===
+        header.addEventListener('click', () => {
+          // Clear main view and render subcategory page
+          app.innerHTML = `
+            <h2>📂 ${topLevel}</h2>
+            <p class="page-subtext">Documents and manuals for ${topLevel.toLowerCase()}.</p>
+            <div class="file-section"></div>
+            <button class="guide-btn" id="backToFiles">⬅ Back to All Files</button>
+          `;
 
+          const innerSection = app.querySelector('.file-section');
 
-          section.appendChild(card);
-        });
-      });
+          Object.entries(subGroups).forEach(([subCat, files]) => {
+            const card = document.createElement('div');
+            card.className = 'card';
 
-      // === Top-level card toggle ===
-      section.querySelectorAll('.card-header').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const body = btn.nextElementSibling;
-          const isOpen = body.classList.contains('open');
+            const infoAccordion = renderInfoAccordion(subCat);
+            const fileEntries = `
+              <div class="file-links-wrapper">
+                ${files.map(file => renderFileEntry(file)).join('')}
+                ${subCat === 'T4' ? renderT4VideoAccordion() : ''}
+              </div>`;
 
-          section.querySelectorAll('.card-body').forEach(b => {
-            b.classList.remove('open');
-            b.style.height = null;
+            card.innerHTML = `
+              <button class="card-header">${subCat}</button>
+              <div class="card-body">
+                ${infoAccordion}
+                ${fileEntries}
+              </div>
+            `;
+
+            innerSection.appendChild(card);
           });
 
-          if (!isOpen) {
-            body.classList.add('open');
-            body.style.height = 'auto';
-          }
-        });
-      });
-
-      // === Nested accordion toggle (fix for mobile Chrome) ===
-      section.querySelectorAll('.info-header').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const infoBody = btn.nextElementSibling;
-          const cardBody = btn.closest('.card-body');
-          const isOpen = infoBody.classList.contains('open');
-
-          // Close all others in this card
-          cardBody.querySelectorAll('.info-body').forEach(b => {
-            b.classList.remove('open');
-            b.style.maxHeight = null;
-          });
-
-          if (!isOpen) {
-            infoBody.classList.add('open');
-
-            // Wait to measure scrollHeight correctly
-            requestAnimationFrame(() => {
-              infoBody.style.maxHeight = infoBody.scrollHeight + 'px';
-
-              // Fix parent height after this one expands
-              setTimeout(() => {
-                cardBody.style.height = 'auto';
-              }, 200);
+          // Enable sub-card toggles
+          innerSection.querySelectorAll('.card-header').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const body = btn.nextElementSibling;
+              const isOpen = body.classList.contains('open');
+              innerSection.querySelectorAll('.card-body').forEach(b => {
+                b.classList.remove('open');
+                b.style.height = null;
+              });
+              if (!isOpen) {
+                body.classList.add('open');
+                body.style.height = 'auto';
+              }
             });
-          } else {
-            infoBody.classList.remove('open');
-            infoBody.style.maxHeight = null;
+          });
 
-            setTimeout(() => {
-              cardBody.style.height = 'auto';
-            }, 200);
-          }
+          innerSection.querySelectorAll('.info-header').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const infoBody = btn.nextElementSibling;
+              const cardBody = btn.closest('.card-body');
+              const isOpen = infoBody.classList.contains('open');
+              cardBody.querySelectorAll('.info-body').forEach(b => {
+                b.classList.remove('open');
+                b.style.maxHeight = null;
+              });
+              if (!isOpen) {
+                infoBody.classList.add('open');
+                requestAnimationFrame(() => {
+                  infoBody.style.maxHeight = infoBody.scrollHeight + 'px';
+                });
+              } else {
+                infoBody.classList.remove('open');
+                infoBody.style.maxHeight = null;
+              }
+            });
+          });
+
+          document.getElementById('backToFiles')?.addEventListener('click', loadFilesPage);
         });
       });
     })
@@ -241,7 +336,7 @@ function renderFileEntry(file) {
 
   return `
     <div class="file-entry">
-      <a class="file-link-btn" href="${fileUrl}" target="_blank" rel="noopener">
+      <a class="file-link-btn flat-btn" href="${fileUrl}" target="_blank" rel="noopener">
         ${icon} ${file.name}
       </a>
 
@@ -273,12 +368,19 @@ function renderFileEntry(file) {
 
 // === Render System Info (e.g., T4 Overview)
 function renderInfoAccordion(subCat) {
-  const info = infoContentMap[subCat];
+  // Normalize key for lookup
+  const normalizedKey = subCat.trim().toLowerCase();
+  const match = Object.keys(infoContentMap).find(
+    key => key.trim().toLowerCase() === normalizedKey
+  );
+
+  const info = match ? infoContentMap[match] : null;
   if (!info) return '';
+
   return `
   <div class="file-entry overview-entry">
       <button class="info-header">${info.title}</button>
-      <div class="info-body">
+      <div class="info-body" style="max-height: 0; overflow: hidden;">
         ${info.body}
       </div>
     </div>

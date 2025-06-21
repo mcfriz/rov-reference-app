@@ -3,10 +3,7 @@
     "T4": [
       {
         "name": "T4 Manual",
-        "url": "https://drive.google.com/file/d/1v4vFk7KXP27tft3SKZe20YIbmWzPE-xu/view?usp=drive_link",
-        "videos": [
-          { "label": "Quick Start Video", "url": "https://www.youtube.com/watch?v=abc123" }
-        ]
+        "url": "https://drive.google.com/file/d/1v4vFk7KXP27tft3SKZe20YIbmWzPE-xu/view?usp=drive_link"
       },
       {
         "name": "T4 Torque Cheat Sheet",

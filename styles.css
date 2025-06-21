@@ -439,7 +439,8 @@ tr.highlight {
 .guide-btn,
 .guide-btn.small-btn {
   padding: 0.5rem 1.2rem;
-  font-size: 0.95rem;
+  font-size: 0.90rem;
+  font-weight: bold;
   background: var(--accent);
   color: #000;
   text-decoration: none;
@@ -1076,7 +1077,7 @@ html {
 }
 .info-header {
   width: 100%;
-  text-align: left;
+  text-align: center;
   
   color: rgb(0, 0, 0);
   padding: 0.75rem 1rem;
@@ -1126,4 +1127,155 @@ html {
 }
 .overview-entry {
 border-top: 5px solid var(--accent-soft);
+}
+.file-group {
+  margin-bottom: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.file-group-header {
+  background: var(--primary);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  border: none;
+  text-align: left;
+  width: 100%;
+  transition: background 0.2s ease;
+}
+
+.file-group-header:hover {
+  background: var(--secondary);
+}
+
+.file-group-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.3s ease;
+  padding: 0 1rem;
+}
+
+.file-group.open .file-group-body {
+  padding-top: 1rem;
+}
+
+.file-group-header::before {
+  content: "▶️ ";
+  margin-right: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.file-group.open > .file-group-header::before {
+  content: "🔽 ";
+}
+.file-group.open {
+  box-shadow: 0 0 6px rgba(0, 95, 153, 0.2);
+}
+/* Minimal, clean file link style */
+.file-link-btn.flat-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none; /* ✅ remove underline */
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.file-link-btn.flat-btn:hover {
+  color: var(--secondary);
+  text-decoration: none;
+}
+.file-links-wrapper {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+/* === Modern T4 Video Section Styling === */
+.t4-video-section {
+  margin-top: 1.5rem;
+  padding: 0.5rem 0;
+  border-top: 2px solid var(--accent);
+}
+
+.t4-video-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Joint dropdown blocks */
+.video-joint {
+  border-bottom: 1px solid #ddd;
+  padding: 0.25rem 0;
+}
+
+.joint-summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+  padding: 0.5rem 0;
+  list-style: none;
+  transition: color 0.2s;
+}
+
+.joint-summary:hover {
+  color: var(--accent);
+}
+
+.video-list {
+  list-style: none;
+  padding-left: 1rem;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.video-list li {
+  margin: 0.25rem 0;
+}
+
+.video-link {
+  font-size: 0.92rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.video-link:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+/* 📱 Mobile tweaks */
+@media (max-width: 768px) {
+  .t4-video-heading {
+    font-size: 0.95rem;
+    text-align: left;
+  }
+
+  .joint-summary {
+    font-size: 0.9rem;
+  }
+
+  .video-link {
+    font-size: 0.88rem;
+  }
 }
