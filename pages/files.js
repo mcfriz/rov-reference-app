@@ -242,7 +242,7 @@ export function loadFilesPage() {
         group.className = 'file-group';
 
         const header = document.createElement('button');
-        header.className = 'file-group-header';
+        header.className = 'file-group-header tab-btn';
         header.textContent = topLevel;
         group.appendChild(header);
 

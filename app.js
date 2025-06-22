@@ -4,6 +4,8 @@ import { loadFittingFinderPage } from './pages/fitting-finder.js';
 import { loadGuidePage } from './pages/guide.js';
 import { loadManipulatorPage } from './pages/manipulators.js';
 import { loadFilesPage } from './pages/files.js';
+import { loadFiberPage } from './pages/fiber.js';
+
 
 // === ROUTES OBJECT ===
 const routes = {
@@ -42,10 +44,9 @@ const routes = {
     <p>Placeholder for electrical procedures and diagnostics.</p>
   `),
 
-  '/fiber': () => renderContent(`
-    <h2>Fiber Maintenance</h2>
-    <p>Placeholder for fiber optic maintenance and testing guides.</p>
-  `),
+'/fiber': loadFiberPage,
+
+
 
   '/404': () => renderContent(`<h2>404 - Page not found</h2>`)
 };
