@@ -5,6 +5,9 @@ import { loadGuidePage } from './pages/guide.js';
 import { loadManipulatorPage } from './pages/manipulators.js';
 import { loadFilesPage } from './pages/files.js';
 import { loadFiberPage } from './pages/fiber.js';
+import { loadElectricalPage } from './pages/electrical.js';
+import { loadHydraulicPage } from './pages/hydraulic.js';
+
 
 
 // === ROUTES OBJECT ===
@@ -23,12 +26,13 @@ const routes = {
     <h2>Maintenance Home</h2>
     <p>Select a category:</p>
     <ul class="link-list">
-      <li><a href="#/fittings">💧 Hydraulic – Fittings Calculator</a></li>
+
       <li><a href="#/finder">🔍 Fittings Finder</a></li>
       <li><a href="#/guide">📘 Fitting Guide</a></li>
       <li><a href="#/electrical">⚡ Electrical</a></li>
       <li><a href="#/fiber">📡 Fiber</a></li>
       <li><a href="#/manipulators">🦾 Manipulator Reference</a></li>
+       <li><a href="#/hydraulic">🛢️ Hydraulic Maintenance</a></li> <!-- ✅ NEW BUTTON -->
     </ul>
   `),
 
@@ -38,11 +42,9 @@ const routes = {
   '/finder': loadFittingFinderPage,
   '/guide': loadGuidePage,
   '/manipulators': loadManipulatorPage,
+'/electrical': loadElectricalPage,
+'/hydraulic': loadHydraulicPage,
 
-  '/electrical': () => renderContent(`
-    <h2>Electrical Maintenance</h2>
-    <p>Placeholder for electrical procedures and diagnostics.</p>
-  `),
 
 '/fiber': loadFiberPage,
 
