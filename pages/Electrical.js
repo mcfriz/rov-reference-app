@@ -16,58 +16,106 @@ export function loadElectricalPage() {
         <div class="info-block">
           <h4>🎯 Purpose</h4>
           <p>
-            The electrical system in Constructor ROVs distributes power, interfaces with control units, and supplies voltage to tooling, lighting, and sensors.
-          </p>
-          <p>
-            It integrates with the ROV’s control pod and SCU via low- and high-voltage subsystems. Power conditioning, isolation, and distribution are handled by modular components mounted in the electronics bay.
+            The electrical system delivers and manages all power and signal distribution required by the Constructor 5 & 6 ROVs. It supports propulsion, lighting, sensors, manipulators, control electronics, and survey gear through a robust and modular DC power framework.
           </p>
         </div>
 
         <div class="info-block">
-          <h4>🧠 Key Specs</h4>
+          <h4>⚡ Key Specs</h4>
           <ul>
-            <li><strong>Input Voltage:</strong> 3-phase 380–480 V AC</li>
-            <li><strong>Subsea DC Bus:</strong> 24 V and 300 V DC rails</li>
-            <li><strong>Surge Protection:</strong> MOV and fuse protected circuits</li>
+            <li><strong>Primary Voltage Supply:</strong> 3000 VDC (nominal) from topside</li>
+            <li><strong>ROV Bus Voltage:</strong> 400 VDC distribution subsea</li>
+            <li><strong>Control Electronics:</strong> 24 VDC (regulated from 400 VDC)</li>
+            <li><strong>Lighting:</strong> 400 VDC dimmable via PWM drivers</li>
+            <li><strong>Total Power Capacity:</strong> Up to ~100 kW subsea depending on loadout</li>
+            <li><strong>Protection:</strong> Fully fused & monitored via GUI + software alarms</li>
           </ul>
         </div>
 
         <div class="info-block">
-          <h4>🧩 Core Components</h4>
+          <h4>🔧 Core Components</h4>
           <ul>
-            <li><strong>✅ Main Breaker Panel:</strong> Distribution of 3-phase AC</li>
-            <li><strong>✅ DC/DC Converters:</strong> Step-down for logic and sensor supply</li>
-            <li><strong>✅ Relay Boards:</strong> Isolated switching to lighting, solenoids, pumps</li>
-            <li><strong>✅ Power Filters:</strong> EMI suppression on sensitive circuits</li>
+            <li><strong>✅ Topside Power Supply Unit (PSU):</strong>
+              <ul>
+                <li>Converts vessel AC power (typically 440V 3-phase) to 3000 VDC</li>
+                <li>Fiber-isolated control and monitoring</li>
+                <li>Safety interlocks, E-stops, and RCDs built-in</li>
+                <li>Controlled via SCU (Surface Control Unit)</li>
+              </ul>
+            </li>
+            <li><strong>✅ Umbilical Cable:</strong>
+              <ul>
+                <li>Carries 3000 VDC, fiber optic, and optional hydraulic lines</li>
+                <li>Designed for minimal voltage drop over full depth</li>
+                <li>Includes armor and strength members for mechanical load</li>
+              </ul>
+            </li>
+            <li><strong>✅ Subsea Electrical Distribution (in Control Pod):</strong>
+              <ul>
+                <li>Main DC/DC Converter: Steps down 3000 VDC to 400 VDC</li>
+                <li>Internal Bus: 400 VDC routed to thrusters, lights, tools, etc.</li>
+                <li>DC-DC Converters: Generate 24 VDC for logic circuits, control boards, sensors</li>
+                <li>PWM Drivers: Control lighting brightness and soft-start functions</li>
+                <li>Fused Power Distribution Board: Modular, with GUI reporting for each circuit</li>
+              </ul>
+            </li>
+            <li><strong>✅ Thruster Power:</strong>
+              <ul>
+                <li>400 VDC directly powers each Kystdesign thruster</li>
+                <li>Each thruster circuit has:
+                  <ul>
+                    <li>Soft-start</li>
+                    <li>Current monitoring</li>
+                    <li>Individual trip protection</li>
+                  </ul>
+                </li>
+                <li>Real-time current draw & fault status shown on GUI</li>
+              </ul>
+            </li>
+            <li><strong>✅ Manipulator & Tooling Power:</strong>
+              <ul>
+                <li>Hydraulic solenoids powered via 24 VDC</li>
+                <li>Optional auxiliary 400 VDC outlets for heavy tooling (e.g. cutters, torque tools)</li>
+                <li>Tooling relays controlled via GUI or mapped to joystick inputs</li>
+              </ul>
+            </li>
           </ul>
         </div>
 
         <div class="info-block">
-          <h4>🔧 Features</h4>
+          <h4>📟 Control & Monitoring</h4>
           <ul>
-            <li>Modular component layout for rapid swaps</li>
-            <li>Remote voltage monitoring via SCU</li>
-            <li>Fused and labelled outputs on all high voltage lines</li>
-            <li>Optional UPS support for safety-critical systems</li>
+            <li>Kystdesign GUI (via PXI & Ethernet):
+              <ul>
+                <li>Shows power status, voltages, and trip alarms</li>
+                <li>Allows reset of tripped circuits</li>
+                <li>Displays current draw for each thruster, tool, and circuit</li>
+              </ul>
+            </li>
+            <li>Event Logging: Logs undervoltage, trips, and E-stop triggers for diagnostics</li>
+            <li>E-Stop Chain: Includes topside, ROV, and TMS interlocks</li>
           </ul>
         </div>
 
         <div class="info-block">
-          <h4>⚙️ Typical Loads</h4>
+          <h4>📦 Features & Redundancy</h4>
           <ul>
-            <li>24 V: sensors, relays, LED lighting, cameras</li>
-            <li>300 V: thrusters, manipulator pumps, tooling valves</li>
-            <li>AC passthroughs: for onboard chargers or external tools</li>
+            <li>Modular Power Cards: Hot-swappable in control pod</li>
+            <li>Circuit Isolation: Short/fault on one tool does not affect others</li>
+            <li>Remote Resettable Fuses: Software-enabled power cycling</li>
+            <li>Emergency Power Down: Global or per-channel power cut from topside</li>
+            <li>Optional Redundant PSU: On some systems for critical redundancy</li>
           </ul>
         </div>
 
         <div class="info-block">
           <h4>⚠️ Operator Notes</h4>
           <ul>
-            <li>Confirm isolation before disconnecting any high-voltage cable</li>
-            <li>Inspect subsea connectors for corrosion or trapped water</li>
-            <li>Use thermal camera or IR thermometer for hotspot checks</li>
-            <li>Use correct polarity and fusing when wiring any tool</li>
+            <li>Always check thruster current draw after startup — may indicate water ingress or motor jam</li>
+            <li>If a circuit trips repeatedly, check tool or connector for faults before reset</li>
+            <li>Use GUI logs to review cause of trips or undervoltage events</li>
+            <li>Power modules are live when umbilical connected — observe safe isolation during maintenance</li>
+            <li>Confirm correct voltage rails (24V, 400V) before deploying new tools</li>
           </ul>
         </div>
       </div>
@@ -94,7 +142,7 @@ export function loadElectricalPage() {
     </section>
   `;
 
-  // Toggle logic for overview collapse
+  // Toggle logic for overview collapse 
   setTimeout(() => {
     const wrapper = document.getElementById('electricalOverviewWrapper');
     const btn = document.getElementById('togglePurpose');
