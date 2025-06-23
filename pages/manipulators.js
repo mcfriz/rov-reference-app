@@ -17,6 +17,7 @@ export function loadManipulatorPage() {
       <div class="tab-content" id="titan4" style="display: block;">
         <div class="guide-card">
           <h3>🔧 Titan 4 Manipulator</h3>
+          <p><strong>Find documents, videos and manuals in the Files section.</strong>
           <p><strong>Type:</strong> Position-Controlled, 7-Function, Heavy-Duty</p>
           <p><strong>Models:</strong> 4 km & 7 km variants</p>
           <p><strong>Doc Ref:</strong> Titan 4 Manual (011-8212)</p>
@@ -53,6 +54,8 @@ export function loadManipulatorPage() {
       <div class="tab-content" id="atlas" style="display: none;">
         <div class="guide-card">
           <h3>🔧 Atlas 7R Manipulator</h3>
+                    <p><strong>Find documents, videos and manuals in the Files section.</strong>
+
           <p><strong>Type:</strong> Rate-Controlled, 7-Function Grabber</p>
           <p><strong>Model:</strong> 199-0292 Series | Doc Ref: 011-8228</p>
 
@@ -86,6 +89,8 @@ export function loadManipulatorPage() {
       <div class="tab-content" id="rigmaster" style="display: none;">
         <div class="guide-card">
           <h3>🔧 RigMaster Manipulator</h3>
+                    <p><strong>Find documents, videos and manuals in the Files section.</strong>
+
           <p><strong>Type:</strong> Rate-Controlled, 5-Function Utility Arm</p>
           <p><strong>Models:</strong> 199-0274, 199-0287 | Doc Ref: 011–8204</p>
 

@@ -27,12 +27,12 @@ const routes = {
     <p>Select a category:</p>
     <ul class="link-list">
 
-      <li><a href="#/finder">🔍 Fittings Finder</a></li>
-      <li><a href="#/guide">📘 Fitting Guide</a></li>
+      <li><a href="#/hydraulic">🛢️ Hydraulic</a></li> <!-- ✅ NEW BUTTON -->
+      <li><a href="#/finder">🔍 Hydraulic Fittings Finder</a></li>
+      <li><a href="#/guide">📘 Hydraulic Fitting Guide</a></li>
       <li><a href="#/electrical">⚡ Electrical</a></li>
       <li><a href="#/fiber">📡 Fiber</a></li>
-      <li><a href="#/manipulators">🦾 Manipulator Reference</a></li>
-       <li><a href="#/hydraulic">🛢️ Hydraulic Maintenance</a></li> <!-- ✅ NEW BUTTON -->
+      <li><a href="#/manipulators">🦾 Manipulators</a></li>
     </ul>
   `),
 
