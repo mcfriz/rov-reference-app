@@ -527,7 +527,7 @@ tr.highlight {
 
 .tab-btn {
   flex: 1 1 100%;
-  max-width: 280px;
+  /* max-width: 280px; // removed for desktop */
   background: var(--primary);
   color: white;
   border: none;
@@ -1315,4 +1315,43 @@ border-top: 5px solid var(--accent-soft);
     font-size: 0.88rem;
   }
 }
+.home-section {
+  padding: 1rem;
+}
 
+.quick-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.quick-link-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease, transform 0.2s;
+  gap: 0.5rem;
+}
+
+.quick-link-btn:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.quick-link-btn svg {
+  width: 36px;
+  height: 36px;
+  stroke: white;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

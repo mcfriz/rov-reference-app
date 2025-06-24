@@ -12,10 +12,52 @@ import { loadHydraulicPage } from './pages/hydraulic.js';
 
 // === ROUTES OBJECT ===
 const routes = {
-  '/': () => renderContent(`
+'/': () => renderContent(`
+  <section class="home-section">
     <h2>Welcome to the ROV Reference App</h2>
-    <p>Select a section from the menu to begin.</p>
-  `),
+    <p class="page-subtext">Quick access to popular tools and guides:</p>
+
+    <div class="quick-links-grid">
+      <a href="#/files" class="quick-link-btn">
+        <svg viewBox="0 0 24 24"><path d="M10 4H4v16h16V8h-8z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        <span>Files & Documents</span>
+      </a>
+      <a href="#/fiber" class="quick-link-btn">
+        <svg viewBox="0 0 24 24"><path d="M2 12h20M12 2v20" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        <span>Fiber Guide</span>
+      </a>
+      <a href="#/manipulators" class="quick-link-btn">
+<svg viewBox="0 0 24 24">
+  <path d="M4 12l3-3 4 4 5-5 4 4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4" cy="12" r="1.5" fill="currentColor"/>
+  <circle cx="7" cy="9" r="1.5" fill="currentColor"/>
+  <circle cx="11" cy="13" r="1.5" fill="currentColor"/>
+  <circle cx="16" cy="8" r="1.5" fill="currentColor"/>
+  <circle cx="20" cy="12" r="1.5" fill="currentColor"/>
+</svg>
+        <span>Manipulator Reference</span>
+      </a>
+      <a href="#/finder" class="quick-link-btn">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" fill="none"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2"/></svg>
+        <span>Fitting Finder</span>
+      </a>
+      <a href="#/electrical" class="quick-link-btn">
+        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8L21 10h-8z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        <span>Electrical Systems</span>
+      </a>
+      <a href="#/hydraulic" class="quick-link-btn">
+<svg viewBox="0 0 24 24">
+  <rect x="2" y="9" width="6" height="6" stroke="currentColor" stroke-width="2" fill="none"/>
+  <rect x="16" y="9" width="6" height="6" stroke="currentColor" stroke-width="2" fill="none"/>
+  <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2"/>
+  <line x1="12" y1="6" x2="12" y2="18" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2"/>
+</svg>
+        <span>Hydraulic Systems</span>
+      </a>
+    </div>
+  </section>
+`),
+
 
   '/operations': () => renderContent(`
     <h2>Operations Home</h2>

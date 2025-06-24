@@ -42,8 +42,28 @@
     ],
     "Constructor 05": [
       {
-        "name": "Constructor 05 Manual",
-        "url": "https://drive.google.com/file/d/yyy789/view"
+        "name": "Constructor 05 General Manual",
+        "url": "https://drive.google.com/drive/folders/1vdtql2GtcpIB7nN-fRMZ0Dgamj5uiesD?usp=drive_link"
+      },
+            {
+        "name": "Constructor 05 Hydraulic Manual",
+        "url": "https://drive.google.com/drive/folders/1v0P2I415X9eC_VhiNdHEHjVq6EUo5qGJ?usp=drive_link"
+      },
+        {
+        "name": "Constructor 05 Electic Manual",
+        "url": "https://drive.google.com/drive/folders/19oIA2Vgfl8c4aPh2vqq2vRCQEPccC4B5?usp=drive_link"
+      },
+            {
+        "name": "Constructor 05 Control Room and Software Manual",
+        "url": "https://drive.google.com/drive/folders/1nA-IBydf63EsYghwDt2yeAYRbazwma8N?usp=drive_link"
+      },
+              {
+        "name": "Constructor 05 PDU Manual",
+        "url": "https://drive.google.com/drive/folders/1V2NpmccHrF5lHQFzgqHxLjPCUqPIBEUL?usp=drive_link"
+      },
+            {
+        "name": "Constructor 05 Aux Equipment Manual",
+        "url": "https://drive.google.com/drive/folders/1yvrnlCauQPPCW0xJgLq_cxKuKrbXhlpj?usp=drive_link"
       }
     ],
     "Constructor 06": [
@@ -61,23 +81,35 @@
     "Malm Orstad TMS": [
       {
         "name": "Malm Orstad TMS Manual",
-        "url": "https://drive.google.com/file/d/xxxxxtmsmalm/view"
+        "url": "https://drive.google.com/drive/folders/1dYeR31ks7Bu_HUrk8XTVQaTkxOxfCQJR?usp=drive_link"
       }
     ]
   },
   "Tooling": {
     "Torque Tools": [
       {
-        "name": "Torque Tool Guide",
-        "url": "https://drive.google.com/file/d/torque001/view"
+        "name": "Tooling",
+        "url": "https://drive.google.com/drive/folders/1wQ15SdlrNv6BNoveISdIAY0jI6b1yYQb?usp=drive_link"
       }
     ]
   },
   "Other": {
     "General": [
       {
-        "name": "Pre-Dive Checklist",
-        "url": "https://drive.google.com/file/d/check123/view"
+        "name": "Thrusters",
+        "url": "https://drive.google.com/drive/folders/1bU3GL4N6CiRsFOtLpoWAmaQjBqx4IJdw?usp=drive_link"
+      },
+       {
+        "name": "Cameras",
+        "url": "https://drive.google.com/drive/folders/15afkJMF4IlQIKd-4Z5iDU_42U-U7Qp2S?usp=drive_link"
+      },
+      {
+        "name": "Lights",
+        "url": "https://drive.google.com/drive/folders/1PhEfJCEQtHrypbyjFqFiemiUFkfa8DrL?usp=drive_link"
+      },
+       {
+        "name": "Sensors",
+        "url": "https://drive.google.com/drive/folders/1ynvrcT-oa5diWSXJBs9xdD1chdJqMltQ?usp=drive_link"
       }
     ]
   }
